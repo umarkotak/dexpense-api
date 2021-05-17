@@ -1,0 +1,3 @@
+class GroupAccount < ApplicationRecord
+
+end

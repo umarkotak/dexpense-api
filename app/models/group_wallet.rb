@@ -1,0 +1,3 @@
+class GroupWallet < ApplicationRecord
+
+end
