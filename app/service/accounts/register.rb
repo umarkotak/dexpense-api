@@ -2,21 +2,38 @@ module Accounts
   class Register < BaseService
     def initialize(params)
       @params = params.permit(
-        :name, :password, :password_confirmation, :email
+        :username, :password, :password_confirmation, :email
       )
     end
 
     def call
-      create_account
+      validates
+      execute_logic
+      @result = result_data
     end
 
     private
 
-    def create_account
+    def validates
+      validate_create_account
+    end
+
+    def validate_create_account
       if params[:password] != params[:password_confirmation]
-        errors.add(:base, 'password and password confirmation missmatch')
-        return
+        raise '400 || password and password confirmation missmatch'
       end
+    end
+
+    def execute_logic
+      account = Account.create!(
+        username: @params[:username],
+        email: @params[:email],
+        password: @params[:password]
+      )
+    end
+
+    def result_data
+      { username: @params[:username], email: @params[:email] }
     end
   end
 end
