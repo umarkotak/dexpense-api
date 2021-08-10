@@ -20,16 +20,26 @@ module Accounts
 
     def validate_password_confirmation
       if params[:password] != params[:password_confirmation]
-        raise '400 || password and password confirmation missmatch'
+        raise "400 || password and password confirmation missmatch"
       end
     end
 
     def execute_logic
-      account = Account.create!(
-        username: @params[:username],
-        email: @params[:email],
-        password: @params[:password]
-      )
+      ActiveRecord::Base.transaction do
+        account = Account.create!(
+          username: @params[:username],
+          email: @params[:email],
+          password: @params[:password]
+        )
+        group = Group.create!(
+          name: "[DEFAULT] #{account.username}"
+        )
+        group_account = GroupAccount.create!(
+          account_id: account.id,
+          group_id: group.id,
+          role: "owner"
+        )
+      end
     end
 
     def result_data

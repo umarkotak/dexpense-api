@@ -1,9 +1,9 @@
 class CreateTransaction < ActiveRecord::Migration[6.1]
   def change
     create_table :transactions do |t|
-      t.references :accounts
-      t.references :groups
-      t.references :group_wallets
+      t.references :account
+      t.references :group
+      t.references :group_wallet
 
       t.string :category
       t.integer :amount

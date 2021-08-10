@@ -1,8 +1,8 @@
 class CreateGroupAccount < ActiveRecord::Migration[6.1]
   def change
     create_table :group_accounts do |t|
-      t.references :accounts
-      t.references :groups
+      t.references :account
+      t.references :group
       t.string :role
 
       t.timestamps

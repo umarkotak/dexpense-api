@@ -27,27 +27,27 @@ ActiveRecord::Schema.define(version: 2021_05_17_051626) do
   end
 
   create_table "group_accounts", force: :cascade do |t|
-    t.bigint "accounts_id"
-    t.bigint "groups_id"
+    t.bigint "account_id"
+    t.bigint "group_id"
     t.string "role"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
-    t.index ["accounts_id"], name: "index_group_accounts_on_accounts_id"
-    t.index ["groups_id"], name: "index_group_accounts_on_groups_id"
+    t.index ["account_id"], name: "index_group_accounts_on_account_id"
+    t.index ["group_id"], name: "index_group_accounts_on_group_id"
   end
 
   create_table "group_wallets", force: :cascade do |t|
-    t.bigint "accounts_id"
-    t.bigint "groups_id"
+    t.bigint "account_id"
+    t.bigint "group_id"
     t.string "name"
     t.string "type"
     t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
-    t.index ["accounts_id"], name: "index_group_wallets_on_accounts_id"
-    t.index ["groups_id"], name: "index_group_wallets_on_groups_id"
+    t.index ["account_id"], name: "index_group_wallets_on_account_id"
+    t.index ["group_id"], name: "index_group_wallets_on_group_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(version: 2021_05_17_051626) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.bigint "accounts_id"
-    t.bigint "groups_id"
-    t.bigint "group_wallets_id"
+    t.bigint "account_id"
+    t.bigint "group_id"
+    t.bigint "group_wallet_id"
     t.string "category"
     t.integer "amount"
     t.string "direction_type"
@@ -71,9 +71,9 @@ ActiveRecord::Schema.define(version: 2021_05_17_051626) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
-    t.index ["accounts_id"], name: "index_transactions_on_accounts_id"
-    t.index ["group_wallets_id"], name: "index_transactions_on_group_wallets_id"
-    t.index ["groups_id"], name: "index_transactions_on_groups_id"
+    t.index ["account_id"], name: "index_transactions_on_account_id"
+    t.index ["group_id"], name: "index_transactions_on_group_id"
+    t.index ["group_wallet_id"], name: "index_transactions_on_group_wallet_id"
   end
 
 end
