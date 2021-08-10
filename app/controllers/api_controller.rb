@@ -1,5 +1,8 @@
 class ApiController < ApplicationController
-  rescue_from StandardError, with: :handle_error
+  rescue_from StandardError,
+              with: :handle_error
+  rescue_from ActiveRecord::RecordInvalid,
+              with: :handle_error_bad_request
 
   def render_response(status: 200, data: {}, error: "")
     formatted_data = { data: data, error: error }
@@ -31,6 +34,12 @@ class ApiController < ApplicationController
       "\n"
     )
 
-    render_response(status: status, error: error_message)
+    render_response(status: status, error: "#{e.class} | #{error_message}")
+  end
+
+  def handle_error_bad_request(e)
+    raise "400 || #{e.class} | #{e&.message.to_s}"
+  rescue => e
+    handle_error(e)
   end
 end

@@ -15,10 +15,10 @@ module Accounts
     private
 
     def validates
-      validate_create_account
+      validate_password_confirmation
     end
 
-    def validate_create_account
+    def validate_password_confirmation
       if params[:password] != params[:password_confirmation]
         raise '400 || password and password confirmation missmatch'
       end
