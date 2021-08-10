@@ -4,4 +4,10 @@ class AccountsController < ApiController
     service.call
     render_response(data: service.result)
   end
+
+  def login
+    service = Accounts::Login.new(params)
+    service.call
+    render_response(data: service.result)
+  end
 end
