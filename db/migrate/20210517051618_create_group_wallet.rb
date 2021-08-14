@@ -4,7 +4,7 @@ class CreateGroupWallet < ActiveRecord::Migration[6.1]
       t.references :account
       t.references :group
       t.string :name
-      t.string :type
+      t.string :wallet_type
       t.integer :amount
 
       t.timestamps

@@ -9,6 +9,12 @@ class ApiController < ApplicationController
     render(status: status, json: formatted_data)
   end
 
+  def verify_account
+    service = Auth::Authenticator.new(request.headers["Authorization"].to_s)
+    service.call
+    @account = service.result
+  end
+
   private
 
   def handle_error(e)

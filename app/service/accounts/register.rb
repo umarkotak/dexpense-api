@@ -39,6 +39,13 @@ module Accounts
           group_id: group.id,
           role: "owner"
         )
+        group_wallet = GroupWallet.create!(
+          account_id: account.id,
+          group_id: group.id,
+          name: "[DEFAULT] #{account.username}",
+          wallet_type: "cash",
+          amount: 0
+        )
       end
     end
 

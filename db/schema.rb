@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_051626) do
     t.bigint "account_id"
     t.bigint "group_id"
     t.string "name"
-    t.string "type"
+    t.string "wallet_type"
     t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
