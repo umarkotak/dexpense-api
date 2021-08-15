@@ -16,6 +16,10 @@ module Transactions
     private
 
     def validates
+      raise "400 || Missing group" unless group.present? 
+      group_account = group.group_accounts.find_by(account_id: @account.id)
+      return if group_account.present?
+      raise "400 || Invalid group"
     end
 
     def execute_logic
@@ -30,6 +34,10 @@ module Transactions
 
     def ordering
       "id desc"
+    end
+
+    def group
+      @group ||= Group.find(@params[:group_id])
     end
   end
 end
