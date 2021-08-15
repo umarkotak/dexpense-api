@@ -9,4 +9,5 @@ class Account < ApplicationRecord
   has_many :group_accounts
   has_many :group_wallets
   has_many :transactions
+  has_many :groups, through: :group_accounts
 end

@@ -10,4 +10,10 @@ class AccountsController < ApiController
     service.call
     render_response(data: service.result)
   end
+
+  def profile
+    verify_account
+    result = Serializer::Accounts::Profile.new(@account).call
+    render_response(data: result)
+  end
 end
