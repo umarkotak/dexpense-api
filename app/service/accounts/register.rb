@@ -29,7 +29,8 @@ module Accounts
         account = Account.create!(
           username: @params[:username],
           email: @params[:email],
-          password: @params[:password]
+          password: @params[:password],
+          account_type: "default"
         )
         group = Group.create!(
           name: "[DEFAULT] #{account.username}"

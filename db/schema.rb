@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_051626) do
   create_table "accounts", force: :cascade do |t|
     t.string "username"
     t.string "password"
-    t.string "type"
+    t.string "account_type"
     t.string "email"
     t.string "session"
     t.datetime "created_at", precision: 6, null: false
@@ -68,12 +68,22 @@ ActiveRecord::Schema.define(version: 2021_05_17_051626) do
     t.string "name"
     t.string "description"
     t.string "note"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
     t.index ["account_id"], name: "index_transactions_on_account_id"
+    t.index ["category"], name: "index_transactions_on_category"
+    t.index ["direction_type"], name: "index_transactions_on_direction_type"
     t.index ["group_id"], name: "index_transactions_on_group_id"
     t.index ["group_wallet_id"], name: "index_transactions_on_group_wallet_id"
   end
 
+  add_foreign_key "group_accounts", "accounts"
+  add_foreign_key "group_accounts", "groups"
+  add_foreign_key "group_wallets", "accounts"
+  add_foreign_key "group_wallets", "groups"
+  add_foreign_key "transactions", "accounts"
+  add_foreign_key "transactions", "group_wallets"
+  add_foreign_key "transactions", "groups"
 end

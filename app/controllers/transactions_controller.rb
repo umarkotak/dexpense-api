@@ -1,5 +1,11 @@
 class TransactionsController < ApiController
   def index
+    verify_account
+    service = Transactions::Index.new(@account, params)
+    service.call
+    transactions = service.result
+    results = Serializer::Transactions::Index.new(transactions).call
+    render_response(data: results)
   end
 
   def create

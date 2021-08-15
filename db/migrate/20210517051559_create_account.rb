@@ -3,7 +3,7 @@ class CreateAccount < ActiveRecord::Migration[6.1]
     create_table :accounts do |t|
       t.string :username
       t.string :password
-      t.string :type
+      t.string :account_type
       t.string :email
       t.string :session
 
