@@ -2,6 +2,7 @@ class ApiController < ApplicationController
   rescue_from StandardError,
               with: :handle_error
   rescue_from ActiveRecord::RecordInvalid,
+              ActiveRecord::RecordNotFound,
               with: :handle_error_bad_request
 
   def render_response(status: 200, data: {}, error: "")

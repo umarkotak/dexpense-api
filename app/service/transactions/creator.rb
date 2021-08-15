@@ -16,8 +16,15 @@ module Transactions
     private
 
     def validates
+      allowed_wallet
       @transaction = Transaction.new(transaction_params)
       @transaction.validate!
+    end
+
+    def allowed_wallet
+      group_account = group_wallet.group.group_accounts.find_by(account_id: @account.id)
+      return if group_account.present?
+      raise "400 || Invalid wallet"
     end
 
     def execute_logic
