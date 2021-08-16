@@ -26,7 +26,10 @@ module Accounts
     end
 
     def result_data
-      { success: true, session: @account.session }
+      {
+        session: @account.session,
+        username: @account.username
+      }
     end
   end
 end
