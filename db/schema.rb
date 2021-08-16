@@ -51,10 +51,12 @@ ActiveRecord::Schema.define(version: 2021_05_17_051626) do
   end
 
   create_table "groups", force: :cascade do |t|
+    t.bigint "account_id"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.index ["account_id"], name: "index_groups_on_account_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -83,6 +85,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_051626) do
   add_foreign_key "group_accounts", "groups"
   add_foreign_key "group_wallets", "accounts"
   add_foreign_key "group_wallets", "groups"
+  add_foreign_key "groups", "accounts"
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "group_wallets"
   add_foreign_key "transactions", "groups"

@@ -39,7 +39,7 @@ module Transactions
         category: @params[:category],
         amount: @params[:amount],
         direction_type: @params[:direction_type],
-        transaction_at: Time.now(),
+        transaction_at: @params[:transaction_at] || Time.now(),
         name: @params[:name],
         description: @params[:description],
         note: @params[:note],

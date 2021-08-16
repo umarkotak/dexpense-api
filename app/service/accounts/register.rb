@@ -33,6 +33,7 @@ module Accounts
           account_type: "default"
         )
         group = Group.create!(
+          account_id: account.id,
           name: "[DEFAULT] #{account.username}"
         )
         group_account = GroupAccount.create!(

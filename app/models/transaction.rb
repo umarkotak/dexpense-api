@@ -1,7 +1,7 @@
 class Transaction < ApplicationRecord
   TRANSACTION_CATEGORIES = [
     "food",
-    "daily needs",
+    "daily_needs",
     "other"
   ].freeze
   
