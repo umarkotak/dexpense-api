@@ -34,7 +34,7 @@ module Accounts
         )
         group = Group.create!(
           account_id: account.id,
-          name: "[DEFAULT] #{account.username}"
+          name: "default"
         )
         group_account = GroupAccount.create!(
           account_id: account.id,
@@ -44,7 +44,7 @@ module Accounts
         group_wallet = GroupWallet.create!(
           account_id: account.id,
           group_id: group.id,
-          name: "[DEFAULT] #{account.username}",
+          name: "default",
           wallet_type: "cash",
           amount: 0
         )
