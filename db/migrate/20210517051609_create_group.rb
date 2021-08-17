@@ -1,7 +1,7 @@
 class CreateGroup < ActiveRecord::Migration[6.1]
   def change
     create_table :groups do |t|
-      t.references :account, foreign_key: true
+      t.references :account, index: true, foreign_key: {on_delete: :cascade}
       
       t.string :name
 

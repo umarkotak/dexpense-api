@@ -81,12 +81,12 @@ ActiveRecord::Schema.define(version: 2021_05_17_051626) do
     t.index ["group_wallet_id"], name: "index_transactions_on_group_wallet_id"
   end
 
-  add_foreign_key "group_accounts", "accounts"
-  add_foreign_key "group_accounts", "groups"
-  add_foreign_key "group_wallets", "accounts"
-  add_foreign_key "group_wallets", "groups"
-  add_foreign_key "groups", "accounts"
-  add_foreign_key "transactions", "accounts"
-  add_foreign_key "transactions", "group_wallets"
-  add_foreign_key "transactions", "groups"
+  add_foreign_key "group_accounts", "accounts", on_delete: :cascade
+  add_foreign_key "group_accounts", "groups", on_delete: :cascade
+  add_foreign_key "group_wallets", "accounts", on_delete: :cascade
+  add_foreign_key "group_wallets", "groups", on_delete: :cascade
+  add_foreign_key "groups", "accounts", on_delete: :cascade
+  add_foreign_key "transactions", "accounts", on_delete: :cascade
+  add_foreign_key "transactions", "group_wallets", on_delete: :cascade
+  add_foreign_key "transactions", "groups", on_delete: :cascade
 end
