@@ -9,6 +9,10 @@ class Transaction < ApplicationRecord
             presence: true
   validates :category,
             inclusion: { in: TRANSACTION_CATEGORIES }
+  validates :amount,
+            numericality: {greater_than_or_equal_to: 0}
+  validates :direction,
+            inclusion: { in %w(income outcome) }
   
   belongs_to :account
   belongs_to :group
