@@ -7,7 +7,10 @@ module Serializer
 
       def call
         @transactions.map do |transaction|
-          transaction.attributes
+          transaction.attributes.merge({
+            account: transaction.account.attributes.except("password", "session"),
+            group_wallet: transaction.group_wallet.attributes
+          })
         end
       end
     end

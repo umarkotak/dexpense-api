@@ -23,13 +23,13 @@ module Transactions
     end
 
     def execute_logic
-      @transactions = Transaction.preload(:account).where(where_params).limit(@params[:limit]).offset(@params[:offset]).order(ordering)
+      @transactions = Transaction.preload(:account, :group_wallet).where(where_params).limit(@params[:limit]).offset(@params[:offset]).order(ordering)
     end
 
     def where_params
       {
         group_id: @params[:group_id]
-      }.compact!
+      }.compact
     end
 
     def ordering
