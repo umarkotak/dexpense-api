@@ -14,4 +14,13 @@ class GroupsController < ApiController
     result = Serializer::Groups::Show.new(group).call
     render_response(data: result)
   end
+
+  def create
+    verify_account
+    service = Groups::Creator.new(@account, params)
+    service.call
+    group = service.result
+    result = Serializer::Groups::Show.new(group).call
+    render_response(data: result)
+  end
 end
