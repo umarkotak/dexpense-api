@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post '/api/v1/groups/:group_id/invite', to: 'groups#invite'
   get '/api/v1/groups/:group_id', to: 'groups#show'
 
+  post '/api/v1/group_wallets', to: 'group_wallets#create'
+
   post '/api/v1/transactions', to: 'transactions#create'
   get '/api/v1/transactions', to: 'transactions#index'
 end

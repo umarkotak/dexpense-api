@@ -28,7 +28,21 @@ module Transactions
     end
 
     def execute_logic
-      @transaction.save!
+      ActiveRecord::Base.transaction do
+        @transaction.save!
+        process_balance
+      end
+    end
+
+    def process_balance
+      if @params[:direction_type] == "income"
+        @group_wallet.amount += @params[:amount]
+      elsif @params[:direction_type] == "outcome"
+        @group_wallet.amount -= @params[:amount]
+      else
+        raise "400 || Invalid direction type`"
+      end
+      @group_wallet.save!
     end
 
     def transaction_params
