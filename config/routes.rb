@@ -13,4 +13,12 @@ Rails.application.routes.draw do
 
   post '/api/v1/transactions', to: 'transactions#create'
   get '/api/v1/transactions', to: 'transactions#index'
+
+  # TODO LIST:
+  # transaction edit
+  # transaction delete
+  # group edit
+  # group delete
+  # group wallet edit
+  # group wallet delete
 end
