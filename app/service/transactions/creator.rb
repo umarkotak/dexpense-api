@@ -36,13 +36,13 @@ module Transactions
 
     def process_balance
       if @params[:direction_type] == "income"
-        @group_wallet.amount += @params[:amount]
+        group_wallet.amount += @params[:amount]
       elsif @params[:direction_type] == "outcome"
-        @group_wallet.amount -= @params[:amount]
+        group_wallet.amount -= @params[:amount]
       else
         raise "400 || Invalid direction type`"
       end
-      @group_wallet.save!
+      group_wallet.save!
     end
 
     def transaction_params
@@ -63,7 +63,7 @@ module Transactions
     def group_wallet
       @group_wallet ||= GroupWallet.find(@params[:group_wallet_id])
     end
-    
+
     def group
       @group ||= group_wallet.group
     end

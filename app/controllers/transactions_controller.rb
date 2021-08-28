@@ -14,4 +14,18 @@ class TransactionsController < ApiController
     service.call
     render_response(data: service.result)
   end
+
+  def edit
+    verify_account
+    service = Transactions::Editor.new(@account, params)
+    service.call
+    render_response(data: service.result)
+  end
+
+  def delete
+    verify_account
+    service = Transactions::Deletor.new(@account, params)
+    service.call
+    render_response(data: service.result)
+  end
 end

@@ -21,7 +21,7 @@ module GroupWallets
     def execute_logic
       @group_wallet = GroupWallet.create!(
         account_id: @account.id,
-        group_id: @group.id,
+        group_id: group.id,
         wallet_type: @params[:wallet_type],
         name: @params[:name],
         amount: 0
@@ -29,7 +29,7 @@ module GroupWallets
     end
 
     def group
-      @group ||= Group.find_by!(params[:group_id])
+      @group ||= Group.find(params[:group_id])
     end
   end
 end

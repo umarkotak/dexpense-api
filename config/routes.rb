@@ -10,15 +10,15 @@ Rails.application.routes.draw do
   get '/api/v1/groups/:group_id', to: 'groups#show'
 
   post '/api/v1/group_wallets', to: 'group_wallets#create'
+  patch '/api/v1/group_wallets/:id', to: 'group_wallets#edit'
+  delete '/api/v1/group_wallets/:id', to: 'group_wallets#delete'
 
   post '/api/v1/transactions', to: 'transactions#create'
+  patch '/api/v1/transactions/:id', to: 'transactions#edit'
+  delete '/api/v1/transactions/:id', to: 'transactions#delete'
   get '/api/v1/transactions', to: 'transactions#index'
 
   # TODO LIST:
-  # transaction edit
-  # transaction delete
   # group edit
   # group delete
-  # group wallet edit
-  # group wallet delete
 end
