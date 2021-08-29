@@ -23,8 +23,8 @@ module Serializer
       end
 
       def accounts(group)
-        group.group_accounts do |group_account|
-          group_account.account.attributes
+        group.group_accounts.map do |group_account|
+          group_account.account.attributes.except("password", "session")
         end
       end
     end
