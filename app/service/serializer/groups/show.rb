@@ -7,7 +7,8 @@ module Serializer
 
       def call
         @group.attributes.merge(
-          group_wallets: group_wallets
+          group_wallets: group_wallets,
+          account: @group.account.attributes.except("password", "session")
         )
       end
 
