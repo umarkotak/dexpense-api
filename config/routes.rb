@@ -22,4 +22,5 @@ Rails.application.routes.draw do
 
   # TODO LIST:
   # group delete
+  # group remove member
 end
