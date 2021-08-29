@@ -23,4 +23,20 @@ class GroupsController < ApiController
     result = Serializer::Groups::Show.new(group).call
     render_response(data: result)
   end
+
+  def index
+    verify_account
+    service = Groups::Index.new(@account, params)
+    service.call
+    groups = service.result
+    results = Serializer::Groups::Index.new(groups).call
+    render_response(data: results)
+  end
+
+  def edit
+    verify_account
+    service = Groups::Editor.new(@account, params)
+    service.call
+    render_response(data: service.result)
+  end
 end

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/api/v1/groups', to: 'groups#create'
   post '/api/v1/groups/:group_id/invite', to: 'groups#invite'
   get '/api/v1/groups/:group_id', to: 'groups#show'
+  get '/api/v1/groups', to: 'groups#index'
+  patch '/api/v1/groups/:group_id', to: 'groups#edit'
 
   post '/api/v1/group_wallets', to: 'group_wallets#create'
   patch '/api/v1/group_wallets/:id', to: 'group_wallets#edit'
@@ -19,6 +21,5 @@ Rails.application.routes.draw do
   get '/api/v1/transactions', to: 'transactions#index'
 
   # TODO LIST:
-  # group edit
   # group delete
 end
