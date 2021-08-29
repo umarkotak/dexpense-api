@@ -1,7 +1,14 @@
 class GroupsController < ApiController
-  def invite
+  def invite_member
     verify_account
     service = Groups::Invitator.new(@account, params)
+    service.call
+    render_response(data: nil)
+  end
+
+  def remove_member
+    verify_account
+    service = Groups::Remover.new(@account, params)
     service.call
     render_response(data: nil)
   end
@@ -36,6 +43,13 @@ class GroupsController < ApiController
   def edit
     verify_account
     service = Groups::Editor.new(@account, params)
+    service.call
+    render_response(data: service.result)
+  end
+
+  def delete
+    verify_account
+    service = Groups::Deletor.new(@account, params)
     service.call
     render_response(data: service.result)
   end
