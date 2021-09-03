@@ -2,6 +2,23 @@ class Transaction < ApplicationRecord
   TRANSACTION_CATEGORIES = [
     "food",
     "daily_needs",
+    "social_life",
+    "self_development",
+    "transportation",
+    "household",
+    "apparel",
+    "beauty",
+    "health",
+    "education",
+    "gift",
+    "infaq",
+    "admin_fee",
+
+    "allowance",
+    "salary",
+    "petty_cash",
+    "bonus",
+    
     "other"
   ].freeze
 

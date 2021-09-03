@@ -33,7 +33,7 @@ module Transactions
     end
 
     def ordering
-      "id desc"
+      "transaction_at desc, id desc"
     end
 
     def group

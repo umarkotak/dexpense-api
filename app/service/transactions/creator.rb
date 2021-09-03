@@ -3,7 +3,7 @@ module Transactions
     def initialize(account, params)
       @account = account
       @params = params.permit(
-        :category, :amount, :direction_type, :group_wallet_id, :name, :description, :note
+        :category, :amount, :direction_type, :group_wallet_id, :name, :description, :note, :transaction_at
       )
     end
 

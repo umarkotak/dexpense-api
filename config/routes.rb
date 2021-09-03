@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   get '/api/v1/transactions', to: 'transactions#index'
 
   # TODO LIST:
-  # group delete
-  # group remove member
+  # dashboard API
+  # statistics API
 end
