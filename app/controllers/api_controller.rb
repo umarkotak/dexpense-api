@@ -45,7 +45,7 @@ class ApiController < ApplicationController
   end
 
   def handle_error_bad_request(e)
-    raise "400 || #{e.class} | #{e&.message.to_s}"
+    raise "400 || #{e.class} | #{e&.message.to_s}".gsub("RuntimeError", "")
   rescue => e
     handle_error(e)
   end
