@@ -41,11 +41,11 @@ class ApiController < ApplicationController
       "\n"
     )
 
-    render_response(status: status, error: "#{e.class} | #{error_message}")
+    render_response(status: status, error: "#{e.class.to_s.gsub("RuntimeError", "")} | #{error_message}")
   end
 
   def handle_error_bad_request(e)
-    raise "400 || #{e.class} | #{e&.message.to_s}".gsub("RuntimeError", "")
+    raise "400 || #{e.class} | #{e&.message.to_s}"
   rescue => e
     handle_error(e)
   end
