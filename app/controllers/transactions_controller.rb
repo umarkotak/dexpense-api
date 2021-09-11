@@ -28,4 +28,8 @@ class TransactionsController < ApiController
     service.call
     render_response(data: service.result)
   end
+
+  def transfer
+    verify_account
+  end
 end
