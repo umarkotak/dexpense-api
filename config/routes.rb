@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   patch '/api/v1/transactions/:id', to: 'transactions#edit'
   delete '/api/v1/transactions/:id', to: 'transactions#delete'
   get '/api/v1/transactions', to: 'transactions#index'
+  get '/api/v1/transactions/:id', to: 'transactions#show'
   post '/api/v1/transactions/transfer', to: 'transactions#transfer'
 
   # TODO LIST:

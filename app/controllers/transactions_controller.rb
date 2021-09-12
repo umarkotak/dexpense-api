@@ -29,6 +29,13 @@ class TransactionsController < ApiController
     render_response(data: service.result)
   end
 
+  def show
+    verify_account
+    service = Transactions::Show.new(@account, params)
+    service.call
+    render_response(data: service.result)
+  end
+
   def transfer
     verify_account
   end
