@@ -13,12 +13,15 @@ class Transaction < ApplicationRecord
     "gift",
     "infaq",
     "admin_fee",
+    "debt",
+    "investation",
 
     "allowance",
     "salary",
     "petty_cash",
     "bonus",
-    
+
+    "adjustment",
     "other"
   ].freeze
 
