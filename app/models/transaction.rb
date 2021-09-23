@@ -15,12 +15,14 @@ class Transaction < ApplicationRecord
     "admin_fee",
     "debt",
     "investation",
+    "fee",
 
     "allowance",
     "salary",
     "petty_cash",
     "bonus",
 
+    "transfer",
     "adjustment",
     "other"
   ].freeze

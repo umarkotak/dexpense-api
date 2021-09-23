@@ -38,5 +38,15 @@ class TransactionsController < ApiController
 
   def transfer
     verify_account
+    service = Transactions::Transfer.new(@account, params)
+    service.call
+    render_response(data: service.result)
+  end
+
+  def adjust
+    verify_account
+    service = Transactions::Adjust.new(@account, params)
+    service.call
+    render_response(data: service.result)
   end
 end

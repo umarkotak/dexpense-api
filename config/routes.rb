@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/api/v1/transactions', to: 'transactions#index'
   get '/api/v1/transactions/:id', to: 'transactions#show'
   post '/api/v1/transactions/transfer', to: 'transactions#transfer'
+  post '/api/v1/transactions/adjust', to: 'transactions#adjust'
 
   # TODO LIST:
   # dashboard API
