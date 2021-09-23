@@ -16,6 +16,7 @@ class Transaction < ApplicationRecord
     "debt",
     "investation",
     "fee",
+    "toys",
 
     "allowance",
     "salary",
