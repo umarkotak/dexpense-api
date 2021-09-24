@@ -31,7 +31,7 @@ module Statistics
         t = t.limit(@params[:limit])
         t = t.offset(@params[:offset])
         t = t.order(ordering)
-        t = t.group("DATE(transaction_at), direction_type")
+        t = t.group("DATE(transaction_at + INTERVAL '7' HOUR), direction_type")
         t = t.select(
           "SUM(amount) AS amount," \
           "MAX(DATE(transaction_at + INTERVAL '7' HOUR)) AS transaction_at," \
