@@ -44,7 +44,10 @@ module Statistics
         if @formatted_results[transaction.transaction_at]
           @formatted_results[transaction.transaction_at][transaction.direction_type] = transaction.amount
         else
-          @formatted_results[transaction.transaction_at] = { transaction.direction_type => transaction.amount }
+          @formatted_results[transaction.transaction_at] = {
+            "income" => 0, "outcome" => 0
+          }
+          @formatted_results[transaction.transaction_at][transaction.direction_type] = transaction.amount
         end
       end
       @formatted_results = @formatted_results.map { |k, v| { name: k.strftime("%Y-%m-%d") }.merge(v) }
