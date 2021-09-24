@@ -46,11 +46,11 @@ module Transactions
     end
 
     def transaction_params
-      if @params[:amount] > group_wallet.amount
-        amount = @params[:amount] - group_wallet.amount
+      if @params[:amount].to_i > group_wallet.amount
+        amount = @params[:amount].to_i - group_wallet.amount
         direction_type = "income"
       else
-        amount = group_wallet.amount - @params[:amount]
+        amount = group_wallet.amount - @params[:amount].to_i
         direction_type = "outcome"
       end
 
@@ -62,7 +62,7 @@ module Transactions
         amount: amount,
         direction_type: direction_type,
         transaction_at: @params[:transaction_at] || Time.now(),
-        name: @params[:name],
+        name: @params[:name] || "Penyesuaian saldo",
         description: @params[:description],
         note: @params[:note],
       }
