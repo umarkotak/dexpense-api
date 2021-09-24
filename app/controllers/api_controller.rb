@@ -41,7 +41,9 @@ class ApiController < ApplicationController
       "\n"
     )
 
-    render_response(status: status, error: "#{e.class.to_s.gsub("RuntimeError", "")} | #{error_message}")
+    formatted_error = "#{e.class.to_s.gsub("RuntimeError", "")} | #{error_message}".delete_prefix(" | ")
+
+    render_response(status: status, error: formatted_error)
   end
 
   def handle_error_bad_request(e)

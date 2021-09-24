@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   post '/api/v1/transactions/transfer', to: 'transactions#transfer'
   post '/api/v1/transactions/adjust', to: 'transactions#adjust'
 
+  get '/api/v1/statistics/transactions/daily', to: 'statistics#transactions_daily'
+
   # TODO LIST:
   # dashboard API
   # statistics API
