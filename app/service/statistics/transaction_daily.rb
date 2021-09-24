@@ -34,7 +34,7 @@ module Statistics
         t = t.group("DATE(transaction_at), direction_type")
         t = t.select(
           "SUM(amount) AS amount," \
-          "MAX(DATE(transaction_at)) AS transaction_at," \
+          "MAX(DATE(transaction_at + INTERVAL '7' HOUR)) AS transaction_at," \
           "MAX(direction_type) AS direction_type" \
         )
       end
