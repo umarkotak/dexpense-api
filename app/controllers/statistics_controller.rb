@@ -12,4 +12,11 @@ class StatisticsController < ApiController
     service.call
     render_response(data: service.result)
   end
+
+  def transactions_dashboard
+    verify_account
+    service = Statistics::TransactionDashboard.new(@account, params)
+    service.call
+    render_response(data: service.result)
+  end
 end
