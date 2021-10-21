@@ -19,4 +19,11 @@ class StatisticsController < ApiController
     service.call
     render_response(data: service.result)
   end
+
+  def whealth_daily
+    verify_account
+    service = Statistics::WhealthDaily.new(@account, params)
+    service.call
+    render_response(data: service.result)
+  end
 end

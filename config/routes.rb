@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   get '/api/v1/statistics/transactions/daily', to: 'statistics#transactions_daily'
   get '/api/v1/statistics/transactions/per_category', to: 'statistics#transactions_per_category'
   get '/api/v1/statistics/transactions/dashboard', to: 'statistics#transactions_dashboard'
+  get '/api/v1/statistics/whealth/daily', to: 'statistics#whealth_daily'
 end
