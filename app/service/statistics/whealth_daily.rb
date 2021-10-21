@@ -61,6 +61,7 @@ module Statistics
         { name: k.strftime("%Y-%m-%d") }.merge(v)
       end
       @formatted_results = @formatted_results.reverse
+      init_balance = balance
       @formatted_results = @formatted_results.map.with_index do |formatted_result, idx|
         if idx == 0
           formatted_result["current_whealth"] = balance
@@ -68,6 +69,7 @@ module Statistics
           balance = balance - @formatted_results[idx-1]["income"] + @formatted_results[idx-1]["outcome"]
           formatted_result["current_whealth"] = balance
         end
+        formatted_result["mid_point"] = init_balance / 2
         formatted_result
       end
       @formatted_results = @formatted_results.reverse
