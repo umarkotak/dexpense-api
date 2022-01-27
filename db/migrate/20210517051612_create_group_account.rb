@@ -8,7 +8,7 @@ class CreateGroupAccount < ActiveRecord::Migration[6.1]
       t.timestamps
       t.datetime :deleted_at
 
-      t.index [:account, :group], unique: true
+      t.index [:account_id, :group_id], unique: true
     end
   end
 end
