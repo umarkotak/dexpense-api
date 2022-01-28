@@ -11,6 +11,10 @@ module Serializer
       end
 
       def call
+        range_income = 0
+        range_outcome = 0
+        range_total = 0
+
         @transactions.each do |transaction|
           temp_transaction = transaction.attributes.merge({
             account: transaction.account.attributes.except("password", "session"),
@@ -36,14 +40,21 @@ module Serializer
           @transactions_map[daily_group_date][:transaction_count] += 1
           if temp_transaction["direction_type"] == "income"
             @transactions_map[daily_group_date][:income] += temp_transaction["amount"]
+            range_income += temp_transaction["amount"]
           else
             @transactions_map[daily_group_date][:outcome] += temp_transaction["amount"]
+            range_outcome += temp_transaction["amount"]
           end
           @transactions_map[daily_group_date][:transactions] << temp_transaction
         end
-        @final_transactions = @transactions_map.keys.map do |key|
-          @transactions_map[key]
-        end
+        @final_transactions = {
+          groupped_transactions: @transactions_map.keys.map do |key|
+            @transactions_map[key]
+          end,
+          income: range_income,
+          outcome: range_outcome,
+          total: range_income - range_outcome
+        }
       end
     end
   end
