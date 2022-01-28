@@ -5,6 +5,8 @@ class ApiController < ApplicationController
               ActiveRecord::RecordNotFound,
               with: :handle_error_bad_request
 
+  before_action :embed_time_zone_to_params
+
   def render_response(status: 200, data: {}, error: "")
     formatted_data = { data: data, error: error }
     render(status: status, json: formatted_data)
@@ -14,6 +16,12 @@ class ApiController < ApplicationController
     service = Auth::Authenticator.new(request.headers["Authorization"].to_s)
     service.call
     @account = service.result
+  end
+
+  def embed_time_zone_to_params
+    params[:time_zone] = request.headers.fetch("Time-Zone", "+7").to_i
+    params[:now_utc] = Time.zone.now
+    params[:now_local] = params[:now_utc] + params[:time_zone].hour
   end
 
   private
