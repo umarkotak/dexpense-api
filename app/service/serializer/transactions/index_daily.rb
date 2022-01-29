@@ -38,10 +38,10 @@ module Serializer
           end
 
           @transactions_map[daily_group_date][:transaction_count] += 1
-          if temp_transaction["direction_type"] == "income"
+          if temp_transaction["direction_type"] == "income" && temp_transaction["category"] != "transfer"
             @transactions_map[daily_group_date][:income] += temp_transaction["amount"]
             range_income += temp_transaction["amount"]
-          else
+          elsif temp_transaction["category"] != "transfer"
             @transactions_map[daily_group_date][:outcome] += temp_transaction["amount"]
             range_outcome += temp_transaction["amount"]
           end
