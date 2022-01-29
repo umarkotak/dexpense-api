@@ -9,6 +9,7 @@ module Transactions
 
     def call
       validates
+      initialize_default_value
       execute_logic
       @result = @transaction
     end
@@ -19,6 +20,10 @@ module Transactions
       allowed_wallet
       @transaction = Transaction.new(transaction_params)
       @transaction.validate!
+    end
+
+    def initialize_default_value
+      @params[:transaction_at] = Time.zone.now unless @params[:transaction_at].to_s.present?
     end
 
     def allowed_wallet
@@ -53,7 +58,7 @@ module Transactions
         category: @params[:category],
         amount: @params[:amount],
         direction_type: @params[:direction_type],
-        transaction_at: @params[:transaction_at] || Time.now(),
+        transaction_at: @params[:transaction_at],
         name: @params[:name],
         description: @params[:description],
         note: @params[:note],
