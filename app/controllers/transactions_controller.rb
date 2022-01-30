@@ -17,6 +17,15 @@ class TransactionsController < ApiController
     render_response(data: results)
   end
 
+  def index_monthly
+    verify_account
+    service = Transactions::IndexMonthly.new(@account, params)
+    service.call
+    transactions = service.result
+    results = Serializer::Transactions::IndexMonthly.new(params, transactions).call
+    render_response(data: results)
+  end
+
   def create
     verify_account
     service = Transactions::Creator.new(@account, params)

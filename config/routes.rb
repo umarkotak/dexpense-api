@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   delete '/api/v1/transactions/:id', to: 'transactions#delete'
   get '/api/v1/transactions', to: 'transactions#index'
   get '/api/v1/transactions/daily', to: 'transactions#index_daily'
+  get '/api/v1/transactions/monthly', to: 'transactions#index_monthly'
   get '/api/v1/transactions/:id', to: 'transactions#show'
   post '/api/v1/transactions/transfer', to: 'transactions#transfer'
   post '/api/v1/transactions/adjust', to: 'transactions#adjust'
