@@ -12,7 +12,6 @@ module Transactions
       validates
       initialize_default_value
       execute_logic
-      binding.pry
       @result = @transactions
     end
 
@@ -34,7 +33,7 @@ module Transactions
     def execute_logic
       @transactions = Transaction.preload(:account, :group_wallet)
         .select("
-          DATE_TRUNC('month', transaction_at) AS transaction_at_month,
+          DATE_TRUNC('month', transaction_at AT time zone INTERVAL '#{-@params[:time_zone]}') AS transaction_at_month,
           SUM(amount) AS amount,
           MAX(direction_type) AS direction_type,
           MAX(account_id) AS account_id,
