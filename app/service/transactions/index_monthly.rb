@@ -42,6 +42,7 @@ module Transactions
         ")
         .where(where_params)
         .where("transaction_at >= :min_date AND transaction_at < :max_date", min_date: @params[:min_date], max_date: @params[:max_date])
+        .where("category IS NOT 'transfer'")
         .group("transaction_at_month, direction_type")
         .order(ordering)
     end
