@@ -26,8 +26,8 @@ module Transactions
 
     def initialize_default_value
       # date format: YYYY-MM-DD
-      @params[:min_date] = (params[:now_local].beginning_of_year-params[:time_zone].hour).to_s unless @params[:min_date].to_s.present?
-      @params[:max_date] = ((params[:now_local].beginning_of_year+1.year)-params[:time_zone].hour).to_s unless @params[:max_date].to_s.present?
+      @params[:min_date] = (params[:now_local].beginning_of_year).to_s unless @params[:min_date].to_s.present?
+      @params[:max_date] = ((params[:now_local].beginning_of_year+1.year)).to_s unless @params[:max_date].to_s.present?
     end
 
     def execute_logic
@@ -41,7 +41,7 @@ module Transactions
           MAX(group_wallet_id) AS group_wallet_id
         ")
         .where(where_params)
-        .where("transaction_at >= :min_date AND transaction_at < :max_date", min_date: @params[:min_date], max_date: @params[:max_date])
+        .where("transaction_at AT time zone INTERVAL '#{-@params[:time_zone]}' >= :min_date AND transaction_at AT time zone INTERVAL '#{-@params[:time_zone]}' < :max_date", min_date: @params[:min_date], max_date: @params[:max_date])
         .where("category != 'transfer'")
         .group("transaction_at_month, direction_type")
         .order(ordering)
