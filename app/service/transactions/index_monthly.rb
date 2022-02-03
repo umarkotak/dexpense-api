@@ -33,7 +33,7 @@ module Transactions
     def execute_logic
       @transactions = Transaction.preload(:account, :group_wallet)
         .select("
-          DATE_TRUNC('month', transaction_at AT time zone INTERVAL '#{-@params[:time_zone]}') AS transaction_at_month,
+          DATE_TRUNC('month', transaction_at + interval '#{@params[:time_zone]} hour') AS transaction_at_month,
           SUM(amount) AS amount,
           MAX(direction_type) AS direction_type,
           MAX(account_id) AS account_id,
@@ -41,7 +41,8 @@ module Transactions
           MAX(group_wallet_id) AS group_wallet_id
         ")
         .where(where_params)
-        .where("transaction_at AT time zone INTERVAL '#{-@params[:time_zone]}' >= :min_date AND transaction_at AT time zone INTERVAL '#{-@params[:time_zone]}' < :max_date", min_date: @params[:min_date], max_date: @params[:max_date])
+        .where("transaction_at + interval '#{@params[:time_zone]} hour' >= :min_date", min_date: @params[:min_date])
+        .where("transaction_at + interval '#{@params[:time_zone]} hour' < :max_date", max_date: @params[:max_date])
         .where("category != 'transfer'")
         .group("transaction_at_month, direction_type")
         .order(ordering)

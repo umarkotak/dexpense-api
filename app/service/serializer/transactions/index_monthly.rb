@@ -17,7 +17,7 @@ module Serializer
 
         @transactions.each do |transaction|
           temp_transaction = transaction
-          daily_group_time = temp_transaction.transaction_at_month.beginning_of_month
+          daily_group_time = temp_transaction.transaction_at_month
           daily_group_date = daily_group_time.to_date
           if !@transactions_map[daily_group_date].present?
             @transactions_map[daily_group_date] = {
