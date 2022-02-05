@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_051626) do
+ActiveRecord::Schema.define(version: 2022_02_03_143734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,19 @@ ActiveRecord::Schema.define(version: 2021_05_17_051626) do
     t.index ["account_id"], name: "index_groups_on_account_id"
   end
 
+  create_table "monthly_budgets", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "group_id"
+    t.string "category"
+    t.integer "total_budget"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["account_id"], name: "index_monthly_budgets_on_account_id"
+    t.index ["category"], name: "index_monthly_budgets_on_category"
+    t.index ["group_id"], name: "index_monthly_budgets_on_group_id"
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.bigint "account_id"
     t.bigint "group_id"
@@ -87,6 +100,8 @@ ActiveRecord::Schema.define(version: 2021_05_17_051626) do
   add_foreign_key "group_wallets", "accounts", on_delete: :cascade
   add_foreign_key "group_wallets", "groups", on_delete: :cascade
   add_foreign_key "groups", "accounts", on_delete: :cascade
+  add_foreign_key "monthly_budgets", "accounts", on_delete: :cascade
+  add_foreign_key "monthly_budgets", "groups", on_delete: :cascade
   add_foreign_key "transactions", "accounts", on_delete: :cascade
   add_foreign_key "transactions", "group_wallets", on_delete: :cascade
   add_foreign_key "transactions", "groups", on_delete: :cascade
