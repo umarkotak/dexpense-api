@@ -3,6 +3,7 @@ class MonthlyBudget < ApplicationRecord
             inclusion: { in: Transaction::TRANSACTION_CATEGORIES }
   validates :total_budget,
             numericality: {greater_than_or_equal_to: 0}
+  validates :category, presence: true, uniqueness: { scope: :group_id }
 
   belongs_to :account
   belongs_to :group

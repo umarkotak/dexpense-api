@@ -2,11 +2,10 @@ module MonthlyBudgets
   class IndexCurrent < BaseService
     def initialize(account, params)
       @account = account
-      @params = params
-      # @params = params.permit(
-      #   :time_zone, :now_utc, :now_local,
-      #   :limit, :offset, :group_id, :min_date, :max_date,
-      # )
+      @params = params.permit(
+        :time_zone, :now_utc, :now_local,
+        :group_id, :min_date, :max_date,
+      )
     end
 
     def call
