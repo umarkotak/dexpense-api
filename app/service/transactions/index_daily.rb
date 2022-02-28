@@ -5,6 +5,7 @@ module Transactions
       @params = params.permit(
         :time_zone, :now_utc, :now_local,
         :limit, :offset, :group_id, :min_date, :max_date,
+        :group_wallet_id, :direction_type, :category
       )
     end
 
@@ -28,6 +29,9 @@ module Transactions
       # date format: YYYY-MM-DD
       @params[:min_date] = (params[:now_local].beginning_of_month-params[:time_zone].hour).to_s unless @params[:min_date].to_s.present?
       @params[:max_date] = ((params[:now_local].beginning_of_month+1.month)-params[:time_zone].hour).to_s unless @params[:max_date].to_s.present?
+      @params[:group_wallet_id] = nil if @params[:group_wallet_id].to_i == 0
+      @params[:direction_type] = nil if @params[:direction_type] == 'all'
+      @params[:category] = nil if @params[:category] == 'all'
     end
 
     def execute_logic
@@ -41,7 +45,10 @@ module Transactions
 
     def where_params
       {
-        group_id: @params[:group_id]
+        group_id: @params[:group_id],
+        group_wallet_id: @params[:group_wallet_id],
+        direction_type: @params[:direction_type],
+        category: @params[:category]
       }.compact
     end
 
