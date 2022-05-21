@@ -22,7 +22,12 @@ module Accounts
     def execute_logic
       @account = Account.find_by(username: params[:username], password: params[:password])
       raise "400 || invalid username or password" unless @account.present?
-      @account.update!(session: "Bearer #{SecureRandom.uuid}-#{SecureRandom.uuid}")
+
+      if @account.session.present?
+        @account.session
+      else
+        @account.update!(session: "Bearer #{SecureRandom.uuid}-#{SecureRandom.uuid}")
+      end
     end
 
     def result_data
