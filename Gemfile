@@ -8,6 +8,8 @@ gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rack-cors'
+gem 'nokogiri'
+gem 'faraday'
 
 group :development, :test do
   gem 'pry'

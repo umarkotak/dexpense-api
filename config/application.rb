@@ -15,16 +15,15 @@ require "action_cable/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
-
-if ['development', 'test'].include? ENV['RAILS_ENV']
-  Dotenv::Railtie.load
-end
-
 module Dexpense
   class Application < Rails::Application
+    # Loading env variable from .env file
+    Bundler.require(*Rails.groups)
+
+    if ['development', 'test'].include? ENV['RAILS_ENV']
+      Dotenv::Railtie.load
+    end
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
