@@ -3,7 +3,7 @@ module MonthlyBudgets
     def initialize(account, params)
       @account = account
       @params = params.permit(
-        :time_zone, :now_utc, :now_local,
+        :locale, :time_zone, :now_utc, :now_local,
         :group_id, :category, :total_budget
       )
     end
@@ -28,12 +28,12 @@ module MonthlyBudgets
     end
 
     def execute_logic
-      monthly_budget = MonthlyBudget.create!({
-        account_id: @account.id,
-        group_id: group.id,
-        category: @params[:category],
-        total_budget: @params[:total_budget],
-      })
+      monthly_budget = MonthlyBudget.find_by!(
+        group_id: @params[:group_id],
+        category: @params[:category]
+      )
+
+      monthly_budget.update!(total_budget: @params[:total_budget])
 
       @result = monthly_budget
     end

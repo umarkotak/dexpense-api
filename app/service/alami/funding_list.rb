@@ -26,7 +26,7 @@ module Alami
       rescue RuntimeError
         # delete jsessionid cache
         return {
-          success: false
+          success: false,
           company_items: []
         }
       end

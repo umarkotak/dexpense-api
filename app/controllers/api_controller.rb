@@ -19,6 +19,7 @@ class ApiController < ApplicationController
   end
 
   def embed_time_zone_to_params
+    params[:locale] = request.headers.fetch("Locale", "id").to_s
     params[:time_zone] = request.headers.fetch("Time-Zone", "+7").to_i
     params[:now_utc] = Time.zone.now
     params[:now_local] = params[:now_utc] + params[:time_zone].hour

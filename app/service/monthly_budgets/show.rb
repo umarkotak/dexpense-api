@@ -1,9 +1,9 @@
 module MonthlyBudgets
-  class Deletor < BaseService
+  class Show < BaseService
     def initialize(account, params)
       @account = account
       @params = params.permit(
-        :time_zone, :now_utc, :now_local,
+        :locale, :time_zone, :now_utc, :now_local,
         :group_id, :category
       )
     end
@@ -32,8 +32,6 @@ module MonthlyBudgets
         group_id: @params[:group_id],
         category: @params[:category]
       )
-
-      monthly_budget.delete
 
       @result = monthly_budget
     end
