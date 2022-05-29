@@ -28,8 +28,16 @@ class MonthlyBudgetsController < ApiController
   end
 
   def edit
+    verify_account
+    service = MonthlyBudgets::Editor.new(@account, params)
+    service.call
+    render_response(data: service.result)
   end
 
   def delete
+    verify_account
+    service = MonthlyBudgets::Deletor.new(@account, params)
+    service.call
+    render_response(data: service.result)
   end
 end
