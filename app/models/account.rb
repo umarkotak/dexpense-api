@@ -4,7 +4,7 @@ class Account < ApplicationRecord
   validates :username, :password, :email,
             presence: true
   validates :account_type,
-            inclusion: { in: %w(default admin) }
+            inclusion: { in: %w(default admin vip) }
 
   has_many :group_accounts
   has_many :group_wallets
