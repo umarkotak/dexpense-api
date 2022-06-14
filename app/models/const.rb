@@ -3,36 +3,6 @@ class Const < ActiveRecord::Base
 
   DAYS = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Ahad'].freeze
 
-  TRANSACTION_CATEGORIES = [
-    "food",
-    "daily_needs",
-    "social_life",
-    "self_development",
-    "transportation",
-    "household",
-    "apparel",
-    "beauty",
-    "health",
-    "education",
-    "gift",
-    "infaq",
-    "admin_fee",
-    "debt",
-    "investation",
-    "fee",
-    "toys",
-    "entertainment",
-
-    "allowance",
-    "salary",
-    "petty_cash",
-    "bonus",
-
-    "transfer",
-    "adjustment",
-    "other",
-  ].freeze
-
   TRANSACTION_CATEGORIES_MAP = {
     "food" => {"id" => "Makanan", "en" => "Food"},
     "daily_needs" => {"id" => "Kebutuhan Harian", "en" => "Daily Needs"},
@@ -61,5 +31,71 @@ class Const < ActiveRecord::Base
     "transfer" => {"id" => "Transfer", "en" => "Transfer"},
     "adjustment" => {"id" => "Adjustment", "en" => "Adjustment"},
     "other" => {"id" => "Lainnya", "en" => "Other"},
+  }
+
+  WEALTH_ASSET_RULES_MAP = {
+    "gold" => {
+      "category": "gold",
+      "id": "Emas",
+      "en": "Gold",
+      "sub_categories_map": {
+        "antam_0.5g": {
+          "weight": 0.5,
+          "unit": "gram"
+          "sub_category": "antam_0.5g"
+          "id": "Antam 0.5g",
+          "id": "Antam 0.5g",
+        },
+        "antam_1g": {
+          "weight": 1,
+          "unit": "gram"
+          "sub_category": "antam_1g"
+          "id": "Antam 1g",
+          "id": "Antam 1g",
+        },
+        "antam_2g": {
+          "weight": 2,
+          "unit": "gram"
+          "sub_category": "antam_2g"
+          "id": "Antam 2g",
+          "id": "Antam 2g",
+        },
+        "antam_3g": {
+          "weight": 3,
+          "unit": "gram"
+          "sub_category": "antam_3g"
+          "id": "Antam 3g",
+          "id": "Antam 3g",
+        },
+        "antam_10g": {
+          "weight": 10,
+          "unit": "gram"
+          "sub_category": "antam_10g"
+          "id": "Antam 10g",
+          "id": "Antam 10g",
+        },
+        "antam_25g": {
+          "weight": 25,
+          "unit": "gram"
+          "sub_category": "antam_25g"
+          "id": "Antam 25g",
+          "id": "Antam 25g",
+        },
+        "antam_50g": {
+          "weight": 50,
+          "unit": "gram"
+          "sub_category": "antam_50g"
+          "id": "Antam 50g",
+          "id": "Antam 50g",
+        },
+        "antam_100g": {
+          "weight": 100,
+          "unit": "gram"
+          "sub_category": "antam_100g"
+          "id": "Antam 100g",
+          "id": "Antam 100g",
+        },
+      }
+    }
   }
 end

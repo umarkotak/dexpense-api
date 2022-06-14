@@ -40,4 +40,6 @@ Rails.application.routes.draw do
   delete '/api/v1/monthly_budgets/:category', to: 'monthly_budgets#delete'
 
   get '/api/v1/categories/index/static', to: 'categories#index_static'
+
+  get '/api/v1/hfgolds/gold/prices', to: 'hfgolds#gold_prices'
 end
