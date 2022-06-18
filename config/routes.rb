@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   delete '/api/v1/group_wallets/:id', to: 'group_wallets#delete'
 
   post '/api/v1/transactions', to: 'transactions#create'
+  get '/api/v1/transactions/download', to: 'transactions#download'
   patch '/api/v1/transactions/:id', to: 'transactions#edit'
   delete '/api/v1/transactions/:id', to: 'transactions#delete'
   get '/api/v1/transactions', to: 'transactions#index'

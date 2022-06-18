@@ -1,3 +1,5 @@
+require 'csv'
+
 class TransactionsController < ApiController
   def index
     verify_account
@@ -66,5 +68,12 @@ class TransactionsController < ApiController
     service = Transactions::Adjust.new(@account, params)
     service.call
     render_response(data: service.result)
+  end
+
+  def download
+    verify_account
+    service = Transactions::Downloader.new(@account, params)
+    service.call
+    render(status: status, json: service.result)
   end
 end
