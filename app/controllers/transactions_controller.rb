@@ -74,6 +74,13 @@ class TransactionsController < ApiController
     verify_account
     service = Transactions::Downloader.new(@account, params)
     service.call
-    render(status: status, json: service.result)
+    render(status: 200, json: service.result)
+  end
+
+  def summary
+    verify_account
+    service = Transactions::Summary.new(@account, params)
+    service.call
+    render_response(data: service.result)
   end
 end

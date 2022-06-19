@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   post '/api/v1/transactions', to: 'transactions#create'
   get '/api/v1/transactions/download', to: 'transactions#download'
+  get '/api/v1/transactions/summary', to: 'transactions#summary'
   patch '/api/v1/transactions/:id', to: 'transactions#edit'
   delete '/api/v1/transactions/:id', to: 'transactions#delete'
   get '/api/v1/transactions', to: 'transactions#index'
