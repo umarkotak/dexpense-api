@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_03_143734) do
+ActiveRecord::Schema.define(version: 2022_06_10_144439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,32 @@ ActiveRecord::Schema.define(version: 2022_02_03_143734) do
     t.index ["group_wallet_id"], name: "index_transactions_on_group_wallet_id"
   end
 
+  create_table "wealth_assets", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "group_id"
+    t.string "name"
+    t.string "description"
+    t.string "sub_description"
+    t.integer "amount"
+    t.string "amount_unit"
+    t.integer "quantity"
+    t.integer "price"
+    t.string "category"
+    t.string "sub_category"
+    t.datetime "transaction_at"
+    t.boolean "for_sale"
+    t.integer "sell_price"
+    t.boolean "cod_only"
+    t.string "cod_place"
+    t.string "cod_place_description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["account_id"], name: "index_wealth_assets_on_account_id"
+    t.index ["category"], name: "index_wealth_assets_on_category"
+    t.index ["group_id"], name: "index_wealth_assets_on_group_id"
+  end
+
   add_foreign_key "group_accounts", "accounts", on_delete: :cascade
   add_foreign_key "group_accounts", "groups", on_delete: :cascade
   add_foreign_key "group_wallets", "accounts", on_delete: :cascade
@@ -105,4 +131,6 @@ ActiveRecord::Schema.define(version: 2022_02_03_143734) do
   add_foreign_key "transactions", "accounts", on_delete: :cascade
   add_foreign_key "transactions", "group_wallets", on_delete: :cascade
   add_foreign_key "transactions", "groups", on_delete: :cascade
+  add_foreign_key "wealth_assets", "accounts", on_delete: :cascade
+  add_foreign_key "wealth_assets", "groups", on_delete: :cascade
 end

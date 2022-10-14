@@ -19,6 +19,9 @@ module Transactions
     def validates
       transaction
       return if transaction.account_id == @account.id
+      return if GroupAccount.find_by(
+        account_id: @account.id, group_id: group_wallet.group_id
+      ).present?
       raise "403 || Not owner of the transaction"
     end
 

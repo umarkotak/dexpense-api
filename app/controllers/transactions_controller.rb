@@ -1,5 +1,3 @@
-require 'csv'
-
 class TransactionsController < ApiController
   def index
     verify_account

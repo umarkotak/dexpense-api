@@ -10,6 +10,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rack-cors'
 gem 'nokogiri'
 gem 'faraday'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'pry'

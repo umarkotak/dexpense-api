@@ -44,4 +44,7 @@ Rails.application.routes.draw do
   get '/api/v1/categories/index/static', to: 'categories#index_static'
 
   get '/api/v1/hfgolds/gold/prices', to: 'hfgolds#gold_prices'
+
+  get '/api/v1/wealth_assets/categories', to: 'wealth_assets#categories'
+  post '/api/v1/wealth_assets', to: 'wealth_assets#create'
 end

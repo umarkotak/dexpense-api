@@ -2,9 +2,8 @@ require 'open-uri'
 
 module Alami
   class FundingList < BaseService
-    def initialize(jsessionid, username)
+    def initialize(jsessionid)
       @jsessionid = jsessionid
-      @username = username
     end
 
     def call
@@ -27,6 +26,7 @@ module Alami
         # delete jsessionid cache
         return {
           success: false,
+          err_code: 'ALAMI_API_FAILURE',
           company_items: []
         }
       end
@@ -39,21 +39,22 @@ module Alami
         company_items << {
           image_url: '',
           code: company_item.css('div.company-name div.row div.col-sm-6 span.d-block.text-uppercase').text,
-          category: '',
-          amount: '',
-          ujrah: '',
+          category: company_item.css('div.company-name div.row div.col-sm-6 span:nth-child(2)').text.strip,
+          amount: company_item.css('div.company-detail div.row:nth-child(2) div.col-2 strong.convertmoneylong').text,
+          ujrah: company_item.css('div.company-detail.d-none.d-lg-block > div:nth-child(1) > div > div.row.mt-4.text-alfa.detail-data.justify-content-between > div:nth-child(2) > strong').text,
           ujrah_per_tenor: '',
           deadline_date: '',
           rating: '',
-          progress: '',
-          available_amount: '',
-          tenor: ''
-
+          progress: company_item.css('div.company-detail.d-none.d-lg-block > div:nth-child(2) > div > div.row > div:nth-child(1) > span > strong').text,
+          available_amount: company_item.css('div.company-detail.d-none.d-lg-block > div:nth-child(2) > div > div.row > div:nth-child(3) > span > strong').text,
+          tenor: '',
+          detail_link: "https://p2p.alamisharia.co.id/" + company_item.css('div.company-detail.d-none.d-lg-block > div:nth-child(1) > div > div:nth-child(1) > div.col-sm-6.text-right > a').attr('href').value
         }
       end
 
       {
         success: true,
+        err_code: '',
         company_items: company_items
       }
     end
