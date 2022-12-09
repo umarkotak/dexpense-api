@@ -38,5 +38,7 @@ module Dexpense
     config.api_only = true
 
     config.logger = Logger.new(STDOUT)
+
+    config.hosts << 'bukukaskita-api.animapu.site'
   end
 end
