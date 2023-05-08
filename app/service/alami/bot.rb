@@ -57,6 +57,7 @@ module Alami
             next
           end
 
+          funding[:detail_link].to_s.sub!('https://p2p.alamisharia.co.id//', 'https://p2p.alamisharia.co.id/')
           message = twilio_client.messages.create(
             body: "
 *ALAMI FUNDING*
@@ -78,7 +79,7 @@ slot: Rp. #{funding[:available_amount]}
         end
 
         puts "\n"
-        sleep(EACH_LOOP_INTERVAL*rand(3..4))
+        sleep(EACH_LOOP_INTERVAL*rand(1..2))
       end
     end
   end

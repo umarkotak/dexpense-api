@@ -47,4 +47,7 @@ Rails.application.routes.draw do
 
   get '/api/v1/wealth_assets/categories', to: 'wealth_assets#categories'
   post '/api/v1/wealth_assets', to: 'wealth_assets#create'
+  get '/api/v1/wealth_assets', to: 'wealth_assets#index'
+  get '/api/v1/wealth_assets/dashboard', to: 'wealth_assets#dashboard'
+  get '/api/v1/wealth_assets/groupped', to: 'wealth_assets#groupped'
 end
