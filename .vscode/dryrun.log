@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/umar.ramadhana/umar/personal_projects/rails/dexpense-api'
+make: Entering directory '/home/umarkotak/umar/personal_projects/rails/dexpense-api'
 bin/rails s -p 4000
-make: Leaving directory `/Users/umar.ramadhana/umar/personal_projects/rails/dexpense-api'
+make: Leaving directory '/home/umarkotak/umar/personal_projects/rails/dexpense-api'
  

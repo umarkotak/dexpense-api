@@ -3,34 +3,111 @@ class Const < ActiveRecord::Base
 
   DAYS = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Ahad'].freeze
 
+  DEFAULT_ICON_URL = "https://static.moneylover.me/img/icon/icon_22.png"
+
   TRANSACTION_CATEGORIES_MAP = {
-    "food" => {"id" => "Makanan", "en" => "Food"},
-    "daily_needs" => {"id" => "Kebutuhan Harian", "en" => "Daily Needs"},
-    "social_life" => {"id" => "Sosial", "en" => "Social Life"},
-    "self_development" => {"id" => "Pengembangan Diri", "en" => "Self Development"},
-    "transportation" => {"id" => "Transportasi", "en" => "Transportation"},
-    "household" => {"id" => "Kebutuhan Rumah", "en" => "Household"},
-    "apparel" => {"id" => "Pakaian", "en" => "Apparel"},
-    "beauty" => {"id" => "Kecantikan", "en" => "Beauty"},
-    "health" => {"id" => "Kesehatan", "en" => "Health"},
-    "education" => {"id" => "Pendidikan", "en" => "Education"},
-    "gift" => {"id" => "Hadiah", "en" => "Gift"},
-    "infaq" => {"id" => "Infaq", "en" => "Infaq"},
-    "admin_fee" => {"id" => "Biaya Admin", "en" => "Admin Fee"},
-    "debt" => {"id" => "Hutang", "en" => "Debt"},
-    "investation" => {"id" => "Investasi", "en" => "Investation"},
-    "fee" => {"id" => "Biaya Tambahan", "en" => "Fee"},
-    "toys" => {"id" => "Mainan", "en" => "Toys"},
-    "entertainment" => {"id" => "Hiburan", "en" => "Entertainment"},
+    "food" => {
+      "id" => "Makanan", "en" => "Food",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_2.png"
+    },
+    "daily_needs" => {
+      "id" => "Kebutuhan Harian", "en" => "Daily Needs",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_3.png"
+    },
+    "social_life" => {
+      "id" => "Sosial", "en" => "Social Life",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_18.png"
+    },
+    "self_development" => {
+      "id" => "Pengembangan Diri", "en" => "Self Development",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_52.png"
+    },
+    "transportation" => {
+      "id" => "Transportasi", "en" => "Transportation",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_13.png"
+    },
+    "household" => {
+      "id" => "Kebutuhan Rumah", "en" => "Household",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_8.png"
+    },
+    "apparel" => {
+      "id" => "Pakaian", "en" => "Apparel",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_100.png"
+    },
+    "beauty" => {
+      "id" => "Kecantikan", "en" => "Beauty",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_83.png"
+    },
+    "health" => {
+      "id" => "Kesehatan", "en" => "Health",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_14.png"
+    },
+    "education" => {
+      "id" => "Pendidikan", "en" => "Education",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_113.png"
+    },
+    "gift" => {
+      "id" => "Hadiah", "en" => "Gift",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_117.png"
+    },
+    "infaq" => {
+      "id" => "Infaq", "en" => "Infaq",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_108.png"
+    },
+    "admin_fee" => {
+      "id" => "Biaya Admin", "en" => "Admin Fee",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_135.png"
+    },
+    "debt" => {
+      "id" => "Hutang", "en" => "Debt",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_120.png"
+    },
+    "investation" => {
+      "id" => "Investasi", "en" => "Investation",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_138.png"
+    },
+    "fee" => {
+      "id" => "Biaya Tambahan", "en" => "Fee",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_76.png"
+    },
+    "toys" => {
+      "id" => "Mainan", "en" => "Toys",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_47.png"
+    },
+    "entertainment" => {
+      "id" => "Hiburan", "en" => "Entertainment",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_49.png"
+    },
 
-    "allowance" => {"id" => "Uang Jajan", "en" => "Allowance"},
-    "salary" => {"id" => "Gaji", "en" => "Salary"},
-    "petty_cash" => {"id" => "Uang Kaget", "en" => "Petty Cash"},
-    "bonus" => {"id" => "Bonus", "en" => "Bonus"},
+    "allowance" => {
+      "id" => "Uang Jajan", "en" => "Allowance",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_75.png"
+    },
+    "salary" => {
+      "id" => "Gaji", "en" => "Salary",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_143.png"
+    },
+    "petty_cash" => {
+      "id" => "Uang Kaget", "en" => "Petty Cash",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_117.png"
+    },
+    "bonus" => {
+      "id" => "Bonus", "en" => "Bonus",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_95.png"
+    },
 
-    "transfer" => {"id" => "Transfer", "en" => "Transfer"},
-    "adjustment" => {"id" => "Adjustment", "en" => "Adjustment"},
-    "other" => {"id" => "Lainnya", "en" => "Other"},
+    "transfer" => {
+      "id" => "Transfer", "en" => "Transfer",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_112.png"
+    },
+    "adjustment" => {
+      "id" => "Adjustment", "en" => "Adjustment",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_22.png"
+    },
+    "other" => {
+      "id" => "Lainnya", "en" => "Other",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_22.png"
+    },
   }
 
   WEALTH_ASSET_RULES_MAP = {

@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2022_06_10_144439) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
-    t.index ["account_id", "group_id"], name: "index_group_accounts_on_account_id_and_group_id", unique: true
     t.index ["account_id"], name: "index_group_accounts_on_account_id"
     t.index ["group_id"], name: "index_group_accounts_on_group_id"
   end
