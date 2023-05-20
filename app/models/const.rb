@@ -115,11 +115,11 @@ class Const < ActiveRecord::Base
       "category": "gold",
       "id": "Emas",
       "en": "Gold",
-      "fa_icon": "",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_95.png",
       "index": 1,
       "sub_categories_map": {
         "antam_0.5g": {
-          "weight": 0.5,
+          "amount": 0.5,
           "unit": "gram",
           "sub_category": "antam_0.5g",
           "id": "Antam 0.5g",
@@ -127,7 +127,7 @@ class Const < ActiveRecord::Base
           "index": 1,
         },
         "antam_1g": {
-          "weight": 1,
+          "amount": 1,
           "unit": "gram",
           "sub_category": "antam_1g",
           "id": "Antam 1g",
@@ -135,7 +135,7 @@ class Const < ActiveRecord::Base
           "index": 2,
         },
         "antam_2g": {
-          "weight": 2,
+          "amount": 2,
           "unit": "gram",
           "sub_category": "antam_2g",
           "id": "Antam 2g",
@@ -143,7 +143,7 @@ class Const < ActiveRecord::Base
           "index": 3,
         },
         "antam_3g": {
-          "weight": 3,
+          "amount": 3,
           "unit": "gram",
           "sub_category": "antam_3g",
           "id": "Antam 3g",
@@ -151,7 +151,7 @@ class Const < ActiveRecord::Base
           "index": 4,
         },
         "antam_5g": {
-          "weight": 5,
+          "amount": 5,
           "unit": "gram",
           "sub_category": "antam_5g",
           "id": "Antam 5g",
@@ -159,7 +159,7 @@ class Const < ActiveRecord::Base
           "index": 5,
         },
         "antam_10g": {
-          "weight": 10,
+          "amount": 10,
           "unit": "gram",
           "sub_category": "antam_10g",
           "id": "Antam 10g",
@@ -167,7 +167,7 @@ class Const < ActiveRecord::Base
           "index": 6,
         },
         "antam_25g": {
-          "weight": 25,
+          "amount": 25,
           "unit": "gram",
           "sub_category": "antam_25g",
           "id": "Antam 25g",
@@ -175,7 +175,7 @@ class Const < ActiveRecord::Base
           "index": 7,
         },
         "antam_50g": {
-          "weight": 50,
+          "amount": 50,
           "unit": "gram",
           "sub_category": "antam_50g",
           "id": "Antam 50g",
@@ -183,7 +183,7 @@ class Const < ActiveRecord::Base
           "index": 8,
         },
         "antam_100g": {
-          "weight": 100,
+          "amount": 100,
           "unit": "gram",
           "sub_category": "antam_100g",
           "id": "Antam 100g",
@@ -196,10 +196,12 @@ class Const < ActiveRecord::Base
       "category": "deposit",
       "id": "Deposito",
       "en": "Deposit",
-      "fa_icon": "",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_31.png",
       "index": 2,
       "sub_categories_map": {
         "bank": {
+          "amount": 1,
+          "unit": "money",
           "sub_category": "bank",
           "id": "Bank",
           "en": "Bank",
@@ -211,23 +213,33 @@ class Const < ActiveRecord::Base
       "category": "house",
       "id": "Rumah",
       "en": "House",
-      "fa_icon": "",
+      "icon_url": "https://static.moneylover.me/img/icon/icon_29.png",
       "index": 3,
       "sub_categories_map": {
         "house": {
+          "amount": 1,
+          "unit": "unit",
           "sub_category": "house",
-          "id": "House",
+          "id": "Rumah",
           "en": "House",
           "index": 1,
         },
       }
     },
-  }
+  }.freeze
 
   def self.wealth_asset_to_arr
-    init_val = WEALTH_ASSET_RULES_MAP
+    init_val = WEALTH_ASSET_RULES_MAP.deep_dup
     new_val = init_val.keys.map do |key|
-      init_val[key][:sub_categories_map] = init_val[key][:sub_categories_map].keys.map { |sub_key| init_val[key][:sub_categories_map][sub_key] }
+      init_val[key][:sub_categories_map] = WEALTH_ASSET_RULES_MAP[key][:sub_categories_map].keys.map do |sub_key|
+        init_val[key][:sub_categories_map][sub_key][:name] = "sub_category"
+        init_val[key][:sub_categories_map][sub_key][:value] = init_val[key][:sub_categories_map][sub_key][:sub_category]
+        init_val[key][:sub_categories_map][sub_key][:label] = init_val[key][:sub_categories_map][sub_key][:id]
+        init_val[key][:sub_categories_map][sub_key]
+      end
+      init_val[key][:name] = "category"
+      init_val[key][:value] = init_val[key][:category]
+      init_val[key][:label] = init_val[key][:id]
       init_val[key]
     end
     new_val

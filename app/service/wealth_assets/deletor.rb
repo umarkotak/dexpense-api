@@ -1,10 +1,10 @@
 module WealthAssets
-  class Index < BaseService
+  class Deletor < BaseService
     def initialize(account, params)
       @account = account
       @params = params.permit(
         :time_zone, :now_utc, :now_local,
-        :group_id, :order,
+        :group_id, :id,
       )
     end
 
@@ -22,19 +22,22 @@ module WealthAssets
       group_account = group.group_accounts.find_by(account_id: @account.id)
       return if group_account.present?
       raise "400 || Invalid group"
+      wealth_asset
+      if wealth_asset.account_id != @account.id
+        raise "403 || Forbidden access to asset"
+      end
     end
 
     def initialize_default_value
-      @params[:order] = 'id desc' unless @params[:order].present?
     end
 
     def execute_logic
-      wealth_assets = WealthAsset.where({
-        group_id: group.id,
-        deleted_at: nil,
-      }).order(@params[:order])
+      wealth_asset.update!(deleted_at: Time.now)
+      @result = wealth_asset
+    end
 
-      @result = wealth_assets
+    def wealth_asset
+      @wealth_asset ||= WealthAsset.find_by!(id: params[:id], deleted_at: nil)
     end
 
     def group

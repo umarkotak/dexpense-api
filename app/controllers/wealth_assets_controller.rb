@@ -17,6 +17,14 @@ class WealthAssetsController < ApiController
     render_response(data: service.result)
   end
 
+  def delete
+    # TODO: Implement logic
+    verify_account
+    service = WealthAssets::Deletor.new(@account, params)
+    service.call
+    render_response(data: service.result)
+  end
+
   def dashboard
     # TODO: Implement logic
     verify_account
