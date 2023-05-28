@@ -31,14 +31,19 @@ module WealthAssets
     end
 
     def execute_logic
+      selected_category = Const::WEALTH_ASSET_RULES_MAP[@params[:category]].with_indifferent_access
+      raise "400 || Invalid category" unless selected_category.present?
+      amount = selected_category["sub_categories_map"][@params[:sub_category]]["amount"]
+      amount_unit = selected_category["sub_categories_map"][@params[:sub_category]]["unit"]
+
       wealth_asset = WealthAsset.create!({
         account_id: @account.id,
         group_id: group.id,
         name: @params[:name],
         description: @params[:description],
         sub_description: @params[:sub_description],
-        amount: @params[:amount],
-        amount_unit: @params[:amount_unit],
+        amount: amount,
+        amount_unit:amount_unit,
         quantity: @params[:quantity],
         price: @params[:price],
         category: @params[:category],

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 20 08:56:40 2023
+# Make data base, printed on Sun May 28 17:14:09 2023
 
 # Variables
 
@@ -17,10 +17,7 @@ LC_ALL = C
 # environment
 PULSE_SERVER = unix:/mnt/wslg/PulseServer
 # environment
-define WSLENV
-ELECTRON_RUN_AS_NODE/w:
-
-endef
+WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # environment
 VSCODE_CWD = /mnt/c/Users/umar ramadhana/AppData/Local/Programs/Microsoft VS Code
 # default
@@ -90,7 +87,7 @@ SHELL = /bin/sh
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
+SHLVL = 0
 # environment
 MAKELEVEL := 0
 # default
@@ -104,7 +101,7 @@ MAKEFILES :=
 # automatic
 ?F = $(notdir $?)
 # environment
-NAME = Code
+NAME = DESKTOP-T73143F
 # environment
 HOSTTYPE = x86_64
 # environment
@@ -114,13 +111,13 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 LESS = -R
 # environment
-WSL_INTEROP = /run/WSL/9_interop
+WSL_INTEROP = /run/WSL/12_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
 LOGNAME = umarkotak
 # environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/umar ramadhana/.vscode/extensions/ms-vscode-remote.remote-wsl-0.78.6
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/umar ramadhana/.vscode/extensions/ms-vscode-remote.remote-wsl-0.78.8
 # makefile
 .DEFAULT_GOAL := run
 # environment
@@ -132,11 +129,11 @@ MAKE_VERSION := 4.3
 # environment
 PAGER = less
 # environment
-_ = /mnt/c/Users/umar ramadhana/AppData/Local/Programs/Microsoft VS Code/bin/code
+_ = /home/umarkotak/.vscode-server/bin/b3e4e68a0bc097f0ae7907b217c1119af9e03435/node
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-46158968-d8d3-4757-8f6f-6d4b0ec21c74.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-26a6df05-4a12-4dc3-851f-0c038b7e8c5f.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -224,6 +221,6 @@ alamibot:
 # strcache performance: lookups = 44 / hit rate = 13%
 # hash-table stats:
 # Load=38/8192=0%, Rehash=0, Collisions=0/44=0%
-# Finished Make data base on Sat May 20 08:56:40 2023
+# Finished Make data base on Sun May 28 17:14:09 2023
 
  

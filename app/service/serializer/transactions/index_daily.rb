@@ -17,6 +17,7 @@ module Serializer
 
         @transactions.each do |transaction|
           temp_transaction = transaction.attributes.merge({
+            icon_url: Const::TRANSACTION_CATEGORIES_MAP[transaction.category][:icon_url],
             account: transaction.account.attributes.except("password", "session"),
             group_wallet: transaction.group_wallet.attributes
           })
