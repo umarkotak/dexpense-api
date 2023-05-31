@@ -34,7 +34,22 @@ module WealthAssets
         deleted_at: nil,
       }).order(@params[:order])
 
-      @result = wealth_assets
+      gold_price_data = Hfgold::GetGoldPrices.new.call
+      Rails.logger.info(gold_price_data)
+
+      formatted_wealth_assets = wealth_assets.map do |wa|
+        formatted_wa = wa.attributes.to_h
+
+        if wa.category == "gold"
+          total_gram = wa.amount.to_i * wa.quantity.to_i
+          formatted_wa["total_buyback_price"] = gold_price_data['buyback_price'].to_i * total_gram
+          formatted_wa["profit"] = formatted_wa["total_buyback_price"] - wa.price
+        end
+
+        formatted_wa
+      end
+
+      @result = formatted_wealth_assets
     end
 
     def group

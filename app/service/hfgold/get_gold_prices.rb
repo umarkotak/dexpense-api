@@ -34,7 +34,20 @@ module Hfgold
         }
       end
 
-      result['buyback_price'] = doc.css('section.elementor-section.elementor-top-section.elementor-element.elementor-element-c881983.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default > div > div.elementor-column.elementor-col-50.elementor-top-column.elementor-element.elementor-element-5bf27b7 > div > div > div > div').text.tr('^0-9', '').to_i
+      buyback_prices_raw = doc.css('section.elementor-section.elementor-top-section.elementor-element.elementor-element-c881983.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default > div > div.elementor-column.elementor-col-50.elementor-top-column.elementor-element.elementor-element-5bf27b7 > div > div > div > div').text
+      # result['buyback_price_raw'] = buyback_prices_raw
+
+      buyback_price_breakdown = buyback_prices_raw.split('/gram').map do |one_price|
+        tmp1 = one_price.to_s.downcase.split('rp')
+        res = nil
+        if tmp1.length > 1
+          res = tmp1.last.tr('^0-9', '').to_i
+        end
+        res
+      end.compact
+
+      # result['buyback_price'] = buyback_prices_raw.tr('^0-9', '').to_i
+      result['buyback_price'] = buyback_price_breakdown.first
 
       result['price_change'] = doc.css('section.elementor-section.elementor-top-section.elementor-element.elementor-element-c881983.elementor-section-boxed.elementor-section-height-default.elementor-section-height-default > div > div.elementor-column.elementor-col-50.elementor-top-column.elementor-element.elementor-element-db6cb52 > div > div > div > p:nth-child(2) > strong').text.tr('^0-9', '').to_i
 
