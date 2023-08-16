@@ -26,15 +26,13 @@ class WealthAssetsController < ApiController
   end
 
   def dashboard
-    # TODO: Implement logic
     verify_account
-    service = WealthAssets::Index.new(@account, params)
+    service = WealthAssets::Dashboard.new(@account, params)
     service.call
     render_response(data: service.result)
   end
 
   def groupped
-    # TODO: Implement logic
     verify_account
     service = WealthAssets::IndexGroupped.new(@account, params)
     service.call

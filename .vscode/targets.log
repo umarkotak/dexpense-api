@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun 29 19:21:41 2023
+# Make data base, printed on Wed Aug 16 19:39:01 2023
 
 # Variables
 
@@ -77,8 +75,6 @@ MAKEFILE_LIST := Makefile
 ZSH = /home/umarkotak/.oh-my-zsh
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# environment
-WT_PROFILE_ID = {2c4de342-38b7-51cf-b940-2309a097f518}
 # automatic
 *F = $(notdir $*)
 # automatic
@@ -98,13 +94,11 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /home/umarkotak/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/bin/remote-cli:/home/umarkotak/.rbenv/shims:/home/umarkotak/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/VMware/VMware Player/bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/ProgramData/Oracle/Java/javapath:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Program Files/Go/bin:/mnt/c/mingw64/bin:/mnt/c/Users/umar ramadhana/AppData/Local/Programs/Python/Python311:/mnt/c/Users/umar ramadhana/AppData/Local/Programs/Python/Python311/Scripts:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Cloudflare/Cloudflare WARP/:/mnt/c/Users/umar ramadhana/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/umar ramadhana/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Java/jdk-19/bin:/mnt/c/Users/umar ramadhana/AppData/Local/Android/Sdk/platform-tools:/mnt/c/Users/umar ramadhana/AppData/Local/Android/Sdk/tools:/mnt/c/Users/umar ramadhana/go/bin:/mnt/c/Users/umar ramadhana/AppData/Local/Programs/Fiddler:/mnt/c/Users/umar ramadhana/AppData/Roaming/npm:/usr/local/go/bin:/home/umarkotak/.fzf/bin
+PATH = /home/umarkotak/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/bin/remote-cli:/home/umarkotak/.rbenv/shims:/home/umarkotak/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/VMware/VMware Player/bin/:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/ProgramData/Oracle/Java/javapath:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Program Files/Go/bin:/mnt/c/mingw64/bin:/mnt/c/Users/umar ramadhana/AppData/Local/Programs/Python/Python311:/mnt/c/Users/umar ramadhana/AppData/Local/Programs/Python/Python311/Scripts:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Cloudflare/Cloudflare WARP/:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/umar ramadhana/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/umar ramadhana/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Java/jdk-19/bin:/mnt/c/Users/umar ramadhana/AppData/Local/Android/Sdk/platform-tools:/mnt/c/Users/umar ramadhana/AppData/Local/Android/Sdk/tools:/mnt/c/Users/umar ramadhana/go/bin:/mnt/c/Users/umar ramadhana/AppData/Local/Programs/Fiddler:/mnt/c/Users/umar ramadhana/AppData/Roaming/npm:/usr/local/go/bin:/home/umarkotak/.fzf/bin
 # default
 MAKEFILES := 
 # automatic
 ^F = $(notdir $^)
-# environment
-WT_SESSION = ba57c031-4ca2-4569-be2b-fcb52600938e
 # automatic
 ?F = $(notdir $?)
 # environment
@@ -118,7 +112,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 LESS = -R
 # environment
-WSL_INTEROP = /run/WSL/298_interop
+WSL_INTEROP = /run/WSL/237_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -140,7 +134,7 @@ _ = /mnt/c/Users/umar ramadhana/AppData/Local/Programs/Microsoft VS Code/bin/cod
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-bc139382-79e4-4653-9337-07e39ae7e5eb.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-dbd4aea6-683f-479c-9cf0-b8915cbddb1c.sock
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -162,7 +156,7 @@ WSL_DISTRO_NAME = Ubuntu
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # variable set hash-table stats:
-# Load=73/1024=7%, Rehash=0, Collisions=1/103=1%
+# Load=71/1024=7%, Rehash=0, Collisions=1/101=1%
 
 # Pattern-specific Variable Values
 
@@ -228,6 +222,8 @@ alamibot:
 # strcache performance: lookups = 44 / hit rate = 13%
 # hash-table stats:
 # Load=38/8192=0%, Rehash=0, Collisions=0/44=0%
-# Finished Make data base on Thu Jun 29 19:21:41 2023
+# Finished Make data base on Wed Aug 16 19:39:01 2023
 
  
+make: *** No rule to make target 'all'.  Stop.
+

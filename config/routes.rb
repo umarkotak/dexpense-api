@@ -50,6 +50,6 @@ Rails.application.routes.draw do
   post '/api/v1/wealth_assets', to: 'wealth_assets#create'
   get '/api/v1/wealth_assets', to: 'wealth_assets#index'
   delete '/api/v1/wealth_assets/:id', to: 'wealth_assets#delete'
-  get '/api/v1/wealth_assets/dashboard', to: 'wealth_assets#dashboard' # TODO
+  get '/api/v1/wealth_assets/dashboard', to: 'wealth_assets#dashboard'
   get '/api/v1/wealth_assets/groupped', to: 'wealth_assets#groupped' # TODO
 end

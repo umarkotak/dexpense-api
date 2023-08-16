@@ -35,7 +35,6 @@ module WealthAssets
       }).order(@params[:order])
 
       gold_price_data = Hfgold::GetGoldPrices.new.call
-      Rails.logger.info(gold_price_data)
 
       formatted_wealth_assets = wealth_assets.map do |wa|
         formatted_wa = wa.attributes.to_h
@@ -45,6 +44,9 @@ module WealthAssets
           formatted_wa["total_buyback_price"] = gold_price_data['buyback_price'].to_i * total_gram
           formatted_wa["profit"] = formatted_wa["total_buyback_price"] - wa.price
         end
+
+        formatted_wa["icon_url"] = Const::WEALTH_ASSET_RULES_MAP[wa.category][:icon_url]
+        formatted_wa["title"] = Const::WEALTH_ASSET_RULES_MAP[wa.category][:sub_categories_map][wa.sub_category.to_sym][:id]
 
         formatted_wa
       end
