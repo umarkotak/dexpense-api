@@ -40,5 +40,6 @@ module Dexpense
     config.logger = Logger.new(STDOUT)
 
     config.hosts << 'bukukaskita-api.animapu.site'
+    config.hosts << 'bukukaskita-api.shadow-animapu-1.site'
   end
 end

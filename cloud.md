@@ -14,3 +14,6 @@ create database dexpense_development
 <!-- restore backup -->
 pg_restore -d dexpense_development dexpense.sql
 psql -d dexpense_development < dexpense.sql
+
+<!--  -->
+scp dexpense.sql umarkotak@103.187.146.246:/home/umarkotak/app

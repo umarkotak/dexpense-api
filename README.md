@@ -41,3 +41,16 @@ scp -i "~/.ssh/default.pem" latest.dump ubuntu@ec2-13-214-123-225.ap-southeast-1
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -U admin -d dexpense_development latest.dump
 https://www.baeldung.com/linux/detach-process-from-terminal
 ```
+
+## PRE-REQUISITES
+
+```
+install postgres
+https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart
+
+install rbenv
+https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-20-04
+
+install ruby
+
+```
