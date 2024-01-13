@@ -14,6 +14,20 @@ heroku pg:backups:url b001 --app dexpense-api
 
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -U myuser -d mydb latest.dump
 
+## MAC INSTALLATION
+
+```
+rbenv install 2.7.2
+
+bundle install --path vendor/bundle
+
+// SET CONFIG DB
+
+bin/rails db:migrage
+
+make run
+```
+
 ---
 
 ## MISC

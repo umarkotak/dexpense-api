@@ -4,7 +4,7 @@ module MonthlyBudgets
       @account = account
       @params = params.permit(
         :time_zone, :now_utc, :now_local,
-        :group_id, :category, :total_budget
+        :group_id, :category, :total_budget, :mode, :name
       )
     end
 
@@ -33,6 +33,8 @@ module MonthlyBudgets
         group_id: group.id,
         category: @params[:category],
         total_budget: @params[:total_budget],
+        mode: @params[:mode].to_s,
+        name: @params[:name]
       })
 
       @result = monthly_budget

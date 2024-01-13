@@ -3,7 +3,8 @@ module Transactions
     def initialize(account, params)
       @account = account
       @params = params.permit(
-        :category, :amount, :direction_type, :group_wallet_id, :name, :description, :note, :transaction_at
+        :category, :amount, :direction_type, :group_wallet_id, :name, :description, :note, :transaction_at,
+        :monthly_budget_id
       )
     end
 
@@ -51,6 +52,10 @@ module Transactions
     end
 
     def transaction_params
+      if monthly_budget.present?
+        @params[:category] = monthly_budget.category
+      end
+
       {
         account_id: @account.id,
         group_id: group.id,
@@ -62,6 +67,7 @@ module Transactions
         name: @params[:name],
         description: @params[:description],
         note: @params[:note],
+        monthly_budget_id: @params[:monthly_budget_id],
       }
     end
 
@@ -71,6 +77,11 @@ module Transactions
 
     def group
       @group ||= group_wallet.group
+    end
+
+    def monthly_budget
+      return nil unless @params[:monthly_budget_id].present?
+      @monthly_budget ||= MonthlyBudget.find(@params[:monthly_budget_id])
     end
   end
 end

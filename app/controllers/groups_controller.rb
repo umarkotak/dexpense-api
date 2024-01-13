@@ -53,4 +53,11 @@ class GroupsController < ApiController
     service.call
     render_response(data: service.result)
   end
+
+  def update_sallary_info
+    verify_account
+    service = Groups::UpdateSallaryInfo.new(@account, params)
+    service.call
+    render_response(data: service.result)
+  end
 end

@@ -4,7 +4,7 @@ module MonthlyBudgets
       @account = account
       @params = params.permit(
         :locale, :time_zone, :now_utc, :now_local,
-        :group_id, :category, :total_budget
+        :group_id, :category, :total_budget, :id, :mode, :name
       )
     end
 
@@ -30,10 +30,14 @@ module MonthlyBudgets
     def execute_logic
       monthly_budget = MonthlyBudget.find_by!(
         group_id: @params[:group_id],
-        category: @params[:category]
+        id: @params[:id]
       )
 
-      monthly_budget.update!(total_budget: @params[:total_budget])
+      monthly_budget.update!({
+        total_budget: @params[:total_budget],
+        mode: @params[:mode],
+        name: @params[:name]
+      }.compact)
 
       @result = monthly_budget
     end

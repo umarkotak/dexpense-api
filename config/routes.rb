@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/api/v1/groups', to: 'groups#create'
   post '/api/v1/groups/:group_id/invite', to: 'groups#invite_member'
   post '/api/v1/groups/:group_id/remove', to: 'groups#remove_member'
+  post '/api/v1/groups/:group_id/sallary_info', to: 'groups#update_sallary_info'
   get '/api/v1/groups/:group_id', to: 'groups#show'
   get '/api/v1/groups', to: 'groups#index'
   patch '/api/v1/groups/:group_id', to: 'groups#edit'
@@ -37,9 +38,9 @@ Rails.application.routes.draw do
   get '/api/v1/monthly_budgets', to: 'monthly_budgets#index'
   get '/api/v1/monthly_budgets/current', to: 'monthly_budgets#index_current'
   post '/api/v1/monthly_budgets', to: 'monthly_budgets#create'
-  get '/api/v1/monthly_budgets/:category', to: 'monthly_budgets#show'
-  patch '/api/v1/monthly_budgets/:category', to: 'monthly_budgets#edit'
-  delete '/api/v1/monthly_budgets/:category', to: 'monthly_budgets#delete'
+  get '/api/v1/monthly_budgets/:id', to: 'monthly_budgets#show'
+  patch '/api/v1/monthly_budgets/:id', to: 'monthly_budgets#edit'
+  delete '/api/v1/monthly_budgets/:id', to: 'monthly_budgets#delete'
 
   get '/api/v1/categories/index/static', to: 'categories#index_static'
 

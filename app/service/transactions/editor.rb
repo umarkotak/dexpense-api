@@ -3,7 +3,8 @@ module Transactions
     def initialize(account, params)
       @account = account
       @params = params.permit(
-        :id, :category, :amount, :direction_type, :group_wallet_id, :name, :description, :note, :transaction_at
+        :id, :category, :amount, :direction_type, :group_wallet_id, :name, :description, :note, :transaction_at,
+        :monthly_budget_id
       )
       @transaction_id = @params.delete(:id)
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_10_144439) do
+ActiveRecord::Schema.define(version: 2024_01_13_094202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2022_06_10_144439) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.index ["account_id", "group_id"], name: "index_group_accounts_on_account_id_and_group_id", unique: true
     t.index ["account_id"], name: "index_group_accounts_on_account_id"
     t.index ["group_id"], name: "index_group_accounts_on_group_id"
   end
@@ -56,6 +57,8 @@ ActiveRecord::Schema.define(version: 2022_06_10_144439) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.string "payout_date"
+    t.integer "monthly_sallary"
     t.index ["account_id"], name: "index_groups_on_account_id"
   end
 
@@ -67,6 +70,8 @@ ActiveRecord::Schema.define(version: 2022_06_10_144439) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.string "mode", default: "generic"
+    t.string "name"
     t.index ["account_id"], name: "index_monthly_budgets_on_account_id"
     t.index ["category"], name: "index_monthly_budgets_on_category"
     t.index ["group_id"], name: "index_monthly_budgets_on_group_id"
@@ -87,11 +92,13 @@ ActiveRecord::Schema.define(version: 2022_06_10_144439) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.bigint "monthly_budget_id"
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["category"], name: "index_transactions_on_category"
     t.index ["direction_type"], name: "index_transactions_on_direction_type"
     t.index ["group_id"], name: "index_transactions_on_group_id"
     t.index ["group_wallet_id"], name: "index_transactions_on_group_wallet_id"
+    t.index ["monthly_budget_id"], name: "index_transactions_on_monthly_budget_id"
   end
 
   create_table "wealth_assets", force: :cascade do |t|
@@ -130,6 +137,7 @@ ActiveRecord::Schema.define(version: 2022_06_10_144439) do
   add_foreign_key "transactions", "accounts", on_delete: :cascade
   add_foreign_key "transactions", "group_wallets", on_delete: :cascade
   add_foreign_key "transactions", "groups", on_delete: :cascade
+  add_foreign_key "transactions", "monthly_budgets"
   add_foreign_key "wealth_assets", "accounts", on_delete: :cascade
   add_foreign_key "wealth_assets", "groups", on_delete: :cascade
 end
