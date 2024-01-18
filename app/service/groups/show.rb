@@ -18,6 +18,7 @@ module Groups
 
     def execute_logic
       @group = Group.preload(:group_wallets).find(@params[:group_id])
+      @group.prefill_default
     end
   end
 end

@@ -25,12 +25,16 @@ module MonthlyBudgets
     end
 
     def initialize_default_value
+      @group.prefill_default
+
       # date format: YYYY-MM-DD
       @params[:min_date] = (params[:now_local].beginning_of_month - @params[:time_zone].hour).to_s unless @params[:min_date].to_s.present?
       @params[:max_date] = ((params[:now_local].beginning_of_month+1.month) - @params[:time_zone].hour).to_s unless @params[:max_date].to_s.present?
       # @params[:days_left] = (params[:now_local].end_of_month.to_date - params[:now_local].to_date).to_i
       @params[:days_left] = (group.payout_date.to_i - params[:now_local].day).to_i
-      @params[:days_left] = 1 if @params[:days_left] <= 0
+      if @params[:days_left] <= 0
+        @params[:days_left] = ((params[:now_local] + 1.months).change(day: group.payout_date.to_i) - params[:now_local]) / (24 * 60 * 60)
+      end
     end
 
     def execute_logic
