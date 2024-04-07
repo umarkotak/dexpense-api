@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/api/v1/transactions', to: 'transactions#index'
   get '/api/v1/transactions/daily', to: 'transactions#index_daily'
   get '/api/v1/transactions/monthly', to: 'transactions#index_monthly'
+  get '/api/v1/transactions/chat_gpt_feedback_v1', to: 'transactions#chat_gpt_feedback_v1'
   get '/api/v1/transactions/:id', to: 'transactions#show'
   post '/api/v1/transactions/transfer', to: 'transactions#transfer'
   post '/api/v1/transactions/adjust', to: 'transactions#adjust'

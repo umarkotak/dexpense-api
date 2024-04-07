@@ -81,4 +81,14 @@ class TransactionsController < ApiController
     service.call
     render_response(data: service.result)
   end
+
+  def chat_gpt_feedback_v1
+    verify_account
+    service = Transactions::IndexDaily.new(@account, params)
+    service.call
+    chat_gpt_service = ChatGpt::GetFeedbackV1.new(@account, service.result)
+    chat_gpt_service.call
+    chat_gpt_feedback_result = chat_gpt_service.result
+    render_response(data: chat_gpt_feedback_result)
+  end
 end

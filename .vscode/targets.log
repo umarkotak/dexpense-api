@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Fri Jan 12 18:04:10 2024
+# Make data base, printed on Fri Feb  2 18:07:58 2024
 
 # Variables
 
@@ -19,7 +19,11 @@ make: *** No rule to make target `all'.  Stop.
 # automatic
 ?F = $(notdir $?)
 # environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
 VSCODE_CRASH_REPORTER_PROCESS_TYPE = extensionHost
+# environment
+LC_CTYPE = UTF-8
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -35,16 +39,21 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","osLocale":"en-id","availableLanguages":{}
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 1)
- 
 MAKEFILE_LIST :=  Makefile
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_CWD = /
+VSCODE_CWD = /Users/umarramadhana/umar/personal_projects/rails/dexpense-api
 # environment
 PATH = /Users/umarramadhana/.rbenv/shims:/Users/umarramadhana/Downloads/google-cloud-sdk/bin:/Users/umarramadhana/go/bin:/usr/local/go/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+LIBRARY_PATH = /usr/local/lib:/opt/homebrew/lib
+# environment
+CPATH = /usr/local/include:/opt/homebrew/include
+# environment
+LaunchInstanceID = B4891796-FF60-412D-B7E3-EC1ADFC8DE51
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
@@ -55,6 +64,8 @@ LS_COLORS = di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:
 SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.9GAy7Un8FT/Listeners
 # automatic
 %F = $(notdir $%)
+# environment
+SQLITE_EXEMPT_PATH_FROM_VNODE_GUARDS = /Users/umarramadhana/Library/WebKit/Databases
 # environment
 PWD = /Users/umarramadhana/umar/personal_projects/rails/dexpense-api
 # environment
@@ -68,7 +79,9 @@ HOME = /Users/umarramadhana
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/umarramadhana/Library/Application Support/Code/CachedData/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/umarramadhana/Library/Application Support/Code/CachedData/8b3775030ed1a69b13e4f4c628c612102e30a681
 # environment
 LOGNAME = umarramadhana
 # environment
@@ -81,24 +94,34 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 XPC_FLAGS = 0x0
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
-# default
-MAKECMDGOALS := all
 # environment
-SHLVL = 1
+LC_TERMINAL = iTerm2
+# environment
+SHLVL = 3
+# environment
+JAVA_HOME = /Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
 # default
 MAKE_VERSION := 3.81
 # environment
 USER = umarramadhana
 # makefile
 .DEFAULT_GOAL := run
+# default
+MAKECMDGOALS := all
+# environment
+TERM_SESSION_ID = w0t2p0:315E63B9-24CE-4BAD-82E0-95FE9C9E1D82
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+# environment
+TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
 # environment
@@ -116,11 +139,19 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.9965104.9965110
+TERM_PROGRAM_VERSION = 3.4.23
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.11931723.11931729.DB40A82A-A9E5-47D5-86F6-92B3BBCCE8F6
+# environment
+LC_TERMINAL_VERSION = 3.4.23
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
+# environment
+ITERM_SESSION_ID = w0t2p0:315E63B9-24CE-4BAD-82E0-95FE9C9E1D82
+# environment
+COLORFGBG = 7;0
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
 # environment
@@ -132,11 +163,15 @@ RBENV_SHELL = zsh
 # automatic
 <F = $(notdir $<)
 # environment
+ITERM_PROFILE = Default
+# environment
 GOPRIVATE = source.everywhere.id/*
 # environment
 PAGER = less
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 186a2
 # automatic
 ^F = $(notdir $^)
 # default
@@ -146,9 +181,11 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 99681
+TERM = xterm-256color
+# environment
+VSCODE_PID = 29201
 # variable set hash-table stats:
-# Load=66/1024=6%, Rehash=0, Collisions=2/89=2%
+# Load=85/1024=8%, Rehash=0, Collisions=5/108=5%
 
 # Pattern-specific Variable Values
 
@@ -225,6 +262,6 @@ alamibot:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Jan 12 18:04:10 2024
+# Finished Make data base on Fri Feb  2 18:07:58 2024
 
  

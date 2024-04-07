@@ -6,6 +6,7 @@ pg_dump -d dexpense_development > dexpense.sql
 
 <!-- download backup -->
 scp -i "~/.ssh/default.pem" ubuntu@ec2-13-214-123-225.ap-southeast-1.compute.amazonaws.com:/home/ubuntu/dexpense.sql .
+scp umarkotak@103.187.146.246:/home/umarkotak/dexpense.sql .
 
 <!-- create db -->
 psql -d postgres
