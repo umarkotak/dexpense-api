@@ -34,7 +34,7 @@ module WealthAssets
         deleted_at: nil,
       }).order(@params[:order])
 
-      gold_price_data = Hfgold::GetGoldPrices.new.call
+      gold_price_data = Hfgold::GetGoldPricesV2.new.call
 
       formatted_wealth_assets = wealth_assets.map do |wa|
         formatted_wa = wa.attributes.to_h
