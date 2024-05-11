@@ -6,9 +6,7 @@ default: &default
 
 development:
   <<: *default
-  database: dexpense_development
-  username: admin
-  password: admin
+  url: postgresql://admin:admin@localhost:5432/dexpense_development
 
 test:
   <<: *default
