@@ -41,5 +41,6 @@ module Dexpense
 
     config.hosts << 'bukukaskita-api.animapu.site'
     config.hosts << 'bukukaskita-api.shadow-animapu-1.site'
+    config.hosts << 'bukukaskita-api.shadow-animapu-2.site'
   end
 end
