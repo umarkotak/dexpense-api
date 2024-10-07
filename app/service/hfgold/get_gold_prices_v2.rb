@@ -36,7 +36,7 @@ module Hfgold
         }
       end
 
-      buyback_prices_raw = doc.xpath('/html/body/div[2]/div[3]/div/div[1]/div[1]/div/div[4]/div/p').text
+      buyback_prices_raw = doc.xpath('/html/body/div[1]/section[2]/div/div[1]/div/div/div[5]/div/div/div/h3').text
 
       buyback_price_breakdown = buyback_prices_raw.split('/gram').map do |one_price|
         tmp1 = one_price.to_s.downcase.split('rp')
